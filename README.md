@@ -4,3 +4,4 @@
 ### [__Kotlin__ ](https://github.com/kksa5729/Diary/tree/main/Kotlin)
    + [Why Kotlin](https://github.com/kksa5729/Diary/blob/main/Kotlin/Why%20Kotlin.md) 
    + [01.Package](https://github.com/kksa5729/Diary/blob/main/Kotlin/01.Package.md)
+   + [02.Type](https://github.com/kksa5729/Diary/blob/main/Kotlin/02.Type.md)

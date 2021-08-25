@@ -1,7 +1,7 @@
 # 기록
 매일매일 기록하기
 ## 언어
-### [__Kotlin__ ](https://github.com/kksa5729/Diary/tree/main/Kotlin)
+### __Do it!코틀린 프로그래밍__
    + [Why Kotlin](https://github.com/kksa5729/Diary/blob/main/Kotlin/Why%20Kotlin.md) 
    + [01.패키지](https://github.com/kksa5729/Diary/blob/main/Kotlin/01.패키지.md)
    + [02.자료형](https://github.com/kksa5729/Diary/blob/main/Kotlin/02.자료형.md)

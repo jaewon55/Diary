@@ -10,6 +10,6 @@
    + [05.클래스와 객체](https://github.com/kksa5729/Diary/blob/main/Kotlin/05.%ED%81%B4%EB%9E%98%EC%8A%A4%EC%99%80%20%EA%B0%9D%EC%B2%B4.md)
    + [06.프로퍼티와 초기화](https://github.com/kksa5729/Diary/blob/main/Kotlin/06.프로퍼티와%20초기화.md)
    + [07.다양한 클래스와 인터페이스](https://github.com/kksa5729/Diary/blob/main/Kotlin/07.다양한%20클래스와%20인터페이스.md)
-### __Programmers코딩테스트 연습__
+### __코딩테스트 연습__
    * [level1](https://github.com/kksa5729/Diary/tree/main/Programmers/level1)
    * [level2](https://github.com/kksa5729/Diary/blob/main/Programmers/level2)

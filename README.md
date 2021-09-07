@@ -16,3 +16,5 @@
    * [ASCII table](https://github.com/kksa5729/Diary/blob/main/Programmers/ASCII%20table.md)
    * [level1](https://github.com/kksa5729/Diary/tree/main/Programmers/level1)
    * [level2](https://github.com/kksa5729/Diary/blob/main/Programmers/level2)
+## __주니어 개발자를 윟한 참고자료 KIT__
+   + [01.CLI](https://github.com/kksa5729/Diary/blob/main/%EC%A3%BC%EB%8B%88%EC%96%B4%20%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%A5%BC%20%EC%9C%84%ED%95%9C%20%EC%B0%B8%EA%B3%A0%EC%9E%90%EB%A3%8C%20KIT/CLI.md)

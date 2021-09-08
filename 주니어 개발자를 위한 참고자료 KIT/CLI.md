@@ -60,17 +60,17 @@
 	+ x(execute) : 실행가능
    
 ## 권한 관련 명령어
-	+ `sudo` : 최고 권한으로 실행
-	+ `chown owner:group file` : 파일 소유권 변경
-		+ `chown adjw file01` : file01의 소유자를 adjw로 변경
-	+ `chmod` : 파일의 권한 변경, symbolic한 방법과 numeric한 방법 2가지가 있다.
-		+ symbolic한 방법
-			+ `chmod u+x file01` - file01의 소유자에게 실행권한을 추가
-			+ u(user), g(group), o(others), a(all)에 +,-,= 연산자로 rwx권한을 추가하거나 삭제할 수 있다.
-		+ numeric한 방법
-			+ `chmod 744 file01`
-				+ file01의 권한을 rwxr--r--로 변경
-			+ 0 ~ 7 숫자를 이용해서 파일의 권한을 변경한다.
++ `sudo` : 최고 권한으로 실행
++ `chown owner:group file` : 파일 소유권 변경
+	+ `chown adjw file01` : file01의 소유자를 adjw로 변경
++ `chmod` : 파일의 권한 변경, symbolic한 방법과 numeric한 방법 2가지가 있다.
+	+ symbolic한 방법
+		+ `chmod u+x file01` - file01의 소유자에게 실행권한을 추가
+		+ u(user), g(group), o(others), a(all)에 +,-,= 연산자로 rwx권한을 추가하거나 삭제할 수 있다.
+	+ numeric한 방법
+		+ `chmod 744 file01`
+			+ file01의 권한을 rwxr--r--로 변경
+		+ 0 ~ 7 숫자를 이용해서 파일의 권한을 변경한다.
 + numeric file permission
 <img src = "https://i.imgur.com/SGYIu.png">
 이미지 출처 : https://imgur.com/SGYIu

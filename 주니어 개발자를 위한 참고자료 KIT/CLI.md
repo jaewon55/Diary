@@ -46,7 +46,7 @@
    
 ## Permission
 + 권한 설정을 통해 파일의 접근을 제한할 수 있다.
-+ 파일 목록을 출력했을 때의 정보
+## 파일 목록의 정보
 <img src = "https://res.cloudinary.com/lwgatsby/f_auto/www/uploads/2019/11/fig_permissions_chmod-command.jpg">
 이미지 출처 : https://www.liquidweb.com/kb/what-is-umask-and-how-to-use-it-effectively/
    
@@ -59,7 +59,7 @@
 	+ w(write) : 쓰거나 삭제 가능
 	+ x(execute) : 실행가능
    
-+ 권한 관련 명령어
+## 권한 관련 명령어
 	+ `sudo` : 최고 권한으로 실행
 	+ `chown owner:group file` : 파일 소유권 변경
 		+ `chown adjw file01` : file01의 소유자를 adjw로 변경

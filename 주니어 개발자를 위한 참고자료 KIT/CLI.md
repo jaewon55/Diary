@@ -68,8 +68,7 @@
 		+ `chmod u+x file01` - file01의 소유자에게 실행권한을 추가
 		+ u(user), g(group), o(others), a(all)에 +,-,= 연산자로 rwx권한을 추가하거나 삭제할 수 있다.
 	+ numeric한 방법
-		+ `chmod 744 file01`
-			+ file01의 권한을 rwxr--r--로 변경
+		+ `chmod 744 file01` - file01의 권한을 rwxr--r--로 변경
 		+ 0 ~ 7 숫자를 이용해서 파일의 권한을 변경한다.
 + numeric file permission
 <img src = "https://i.imgur.com/SGYIu.png">

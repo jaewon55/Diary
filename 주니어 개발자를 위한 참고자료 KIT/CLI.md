@@ -45,5 +45,32 @@
 	+ `rm -r dir01` : 디렉터리 dir01을 삭제한다. 디렉터리의 경우 `rm -r`을 사용해야 삭제가 가능하다
    
 ## Permission
++ 권한 설정을 통해 파일의 접근을 제한할 수 있다.
++ 파일 목록을 출력했을 때의 정보
 <img src = "https://res.cloudinary.com/lwgatsby/f_auto/www/uploads/2019/11/fig_permissions_chmod-command.jpg">
 이미지 출처 : https://www.liquidweb.com/kb/what-is-umask-and-how-to-use-it-effectively/
+   
++ file type : `d`는 디렉터리, `-`는 파일
++ user permissions : 소유자의 권한을 나타냄
++ group permissions : 그룹내의 사용자의 권한을 나타냄
++ other permissions : 그 외의 모든 사용자의 권한을 나타냄
++ rwx : 파일에 대한 권한을 나타냄
+	+ r(read) : 읽기가능
+	+ w(write) : 쓰거나 삭제 가능
+	+ x(execute) : 실행가능
+   
++ 권한 관련 명령어
+	+ `sudo` : 최고 권한으로 실행
+	+ `chown owner:group file` : 파일 소유권 변경
+		+ `chown adjw file01` : file01의 소유자를 adjw로 변경
+	+ `chmod` : 파일의 권한 변경, symbolic한 방법과 numeric한 방법 2가지가 있다.
+		+ symbolic한 방법
+			+ `chmod u+x file01` - file01의 소유자에게 실행권한을 추가
+			+ u(user), g(group), o(others), a(all)에 +,-,= 연산자로 rwx권한을 추가하거나 삭제할 수 있다.
+		+ numeric한 방법
+			+ `chmod 744 file01`
+				+ file01의 권한을 rwxr--r--로 변경
+			+ 0 ~ 7 숫자를 이용해서 파일의 권한을 변경한다.
++ numeric file permission
+<img src = "https://i.imgur.com/SGYIu.png">
+이미지 출처 : https://imgur.com/SGYIu

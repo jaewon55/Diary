@@ -18,3 +18,4 @@
    * [level2](https://github.com/kksa5729/Diary/blob/main/Programmers/level2)
 ## __주니어 개발자를 위한 참고자료 KIT__
    + [01.CLI](https://github.com/kksa5729/Diary/blob/main/%EC%A3%BC%EB%8B%88%EC%96%B4%20%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%A5%BC%20%EC%9C%84%ED%95%9C%20%EC%B0%B8%EA%B3%A0%EC%9E%90%EB%A3%8C%20KIT/CLI.md)
+   + [02.생활코딩 Git CLI](https://github.com/kksa5729/Diary/blob/main/%EC%A3%BC%EB%8B%88%EC%96%B4%20%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%A5%BC%20%EC%9C%84%ED%95%9C%20%EC%B0%B8%EA%B3%A0%EC%9E%90%EB%A3%8C%20KIT/%EC%83%9D%ED%99%9C%EC%BD%94%EB%94%A9%20Git%20CLI.md)

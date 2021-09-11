@@ -73,3 +73,10 @@
 + numeric file permission
 <img src = "https://i.imgur.com/SGYIu.png">
 이미지 출처 : https://imgur.com/SGYIu
+
+## 컴파일
++ gcc를 통해서 확장자가 c로 설정된 파일을 컴파일해 실행할 수 있다.
++ 명령어
+	+ `gcc 파일명` : 파일을 컴파일해 실행파일`a.out`을 생성한다.
+	+ `gcc 파일명 -o 생성할파일명` : `a.out`이 아닌 파일명을 지정한 실행파일을 생성한다.
+	+ `./실행파일` : 파일을 실행한다.

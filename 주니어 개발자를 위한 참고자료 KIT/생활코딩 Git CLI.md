@@ -37,4 +37,4 @@
 	+ `git branch` : 현재 branch의 목록을 보여주고 현재 위치하고 있는 branch는 앞에 *이 붙는다.
 	+ `git branch branch명` : 새로운 branch를 만든다.
 	+ `git checkout branch명` : 현재 위치를 해당 branch로 변경한다.
-	+ `git log --all --graph --oneline` : 모든 버전 목록을 축약해서 한눈에 보기 쉽게 출력한다.
+	+ `git log --all --graph --oneline` : 모든 버전 목록을 축약해서 한눈에 보기 쉽게 그래프로 나타낸다.

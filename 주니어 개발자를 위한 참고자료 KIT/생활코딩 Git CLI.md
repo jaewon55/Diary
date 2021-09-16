@@ -31,3 +31,10 @@
 
 + 버전 되돌리기
 	+ `git revert 버전아이디` : 해당 버전을 그대로 두면서 해당 버전 아이디로 수정했던 내용을 이전 버전으로 되돌린다. 이때 충돌이 일어날 수 있기 때문에 역순으로 진행해야 한다.
+
+## Branch & Conflict
++ Branch : 나무에서 가지가 뻗어나가듯 버전이 여러 갈래로 나눠진다.
+	+ `git branch` : 현재 branch의 목록을 보여주고 현재 위치하고 있는 branch는 앞에 *이 붙는다.
+	+ `git branch branch명` : 새로운 branch를 만든다.
+	+ `git checkout branch명` : 현재 위치를 해당 branch로 변경한다.
+	+ `git log --all --graph --oneline` : 모든 버전 목록을 축약해서 한눈에 보기 쉽게 출력한다.

@@ -23,6 +23,8 @@
 ### __씹어먹는 C언어__
    + [비트 연산자](https://github.com/kksa5729/Diary/blob/main/%EC%94%B9%EC%96%B4%EB%A8%B9%EB%8A%94%20C%20%EC%96%B8%EC%96%B4/01.%EB%B9%84%ED%8A%B8%20%EC%97%B0%EC%82%B0%EC%9E%90.md)
    + [반복문](https://github.com/kksa5729/Diary/blob/main/%EC%94%B9%EC%96%B4%EB%A8%B9%EB%8A%94%20C%20%EC%96%B8%EC%96%B4/02.%EB%B0%98%EB%B3%B5%EB%AC%B8.md)
+   + [형변환]()
+   + [포인터]()
 ## __코딩테스트 연습__
    * [ASCII table](https://github.com/kksa5729/Diary/blob/main/Programmers/ASCII%20table.md)
    * [level1](https://github.com/kksa5729/Diary/tree/main/Programmers/level1)

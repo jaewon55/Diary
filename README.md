@@ -20,11 +20,12 @@
 ## C언어
 ### __윤성우의 열혈 자료구조__
    + [자료구조와 알고리즘의 이해](https://github.com/kksa5729/Diary/blob/main/%EC%97%B4%ED%98%88%20%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0%EC%99%80%20%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%EC%9D%98%20%EC%9D%B4%ED%95%B4.md)
-### __씹어먹는 C언어__
+### __씹어먹는 C언어, 코딩도장__
    + [비트 연산자](https://github.com/kksa5729/Diary/blob/main/%EC%94%B9%EC%96%B4%EB%A8%B9%EB%8A%94%20C%20%EC%96%B8%EC%96%B4/01.%EB%B9%84%ED%8A%B8%20%EC%97%B0%EC%82%B0%EC%9E%90.md)
    + [반복문](https://github.com/kksa5729/Diary/blob/main/%EC%94%B9%EC%96%B4%EB%A8%B9%EB%8A%94%20C%20%EC%96%B8%EC%96%B4/02.%EB%B0%98%EB%B3%B5%EB%AC%B8.md)
    + [형변환](https://github.com/kksa5729/Diary/blob/main/%EC%94%B9%EC%96%B4%EB%A8%B9%EB%8A%94%20C%20%EC%96%B8%EC%96%B4/03.%ED%98%95%EB%B3%80%ED%99%98.md)
    + [포인터](https://github.com/kksa5729/Diary/blob/main/%EC%94%B9%EC%96%B4%EB%A8%B9%EB%8A%94%20C%20%EC%96%B8%EC%96%B4/04.%ED%8F%AC%EC%9D%B8%ED%84%B0.md)
+   + [메모리사용](https://github.com/kksa5729/Diary/blob/main/%EC%94%B9%EC%96%B4%EB%A8%B9%EB%8A%94%20C%20%EC%96%B8%EC%96%B4/05.%EB%A9%94%EB%AA%A8%EB%A6%AC%EC%82%AC%EC%9A%A9.md)
 ## __코딩테스트 연습__
    * [ASCII table](https://github.com/kksa5729/Diary/blob/main/Programmers/ASCII%20table.md)
    * [level1](https://github.com/kksa5729/Diary/tree/main/Programmers/level1)

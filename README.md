@@ -26,6 +26,7 @@
    + [형변환](https://github.com/kksa5729/Diary/blob/main/%EC%94%B9%EC%96%B4%EB%A8%B9%EB%8A%94%20C%20%EC%96%B8%EC%96%B4%2C%20%EC%BD%94%EB%94%A9%EB%8F%84%EC%9E%A5/03.%ED%98%95%EB%B3%80%ED%99%98.md)
    + [포인터](https://github.com/kksa5729/Diary/blob/main/%EC%94%B9%EC%96%B4%EB%A8%B9%EB%8A%94%20C%20%EC%96%B8%EC%96%B4%2C%20%EC%BD%94%EB%94%A9%EB%8F%84%EC%9E%A5/04.%ED%8F%AC%EC%9D%B8%ED%84%B0.md)
    + [메모리사용](https://github.com/kksa5729/Diary/blob/main/%EC%94%B9%EC%96%B4%EB%A8%B9%EB%8A%94%20C%20%EC%96%B8%EC%96%B4%2C%20%EC%BD%94%EB%94%A9%EB%8F%84%EC%9E%A5/05.%EB%A9%94%EB%AA%A8%EB%A6%AC%EC%82%AC%EC%9A%A9.md)
+   + [문자열](https://github.com/kksa5729/Diary/blob/main/%EC%94%B9%EC%96%B4%EB%A8%B9%EB%8A%94%20C%20%EC%96%B8%EC%96%B4%2C%20%EC%BD%94%EB%94%A9%EB%8F%84%EC%9E%A5/06.%EB%AC%B8%EC%9E%90%EC%97%B4.md)
 ## __코딩테스트 연습__
    * [ASCII table](https://github.com/kksa5729/Diary/blob/main/Programmers/ASCII%20table.md)
    * [level1](https://github.com/kksa5729/Diary/tree/main/Programmers/level1)

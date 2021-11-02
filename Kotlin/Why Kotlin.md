@@ -5,7 +5,7 @@ Kotlin을 공부하기로 선택했다.
 또한 Google에서 안드로이드 앱을 만들기 좋은 언어로 공식적으로 선언했기 때문이다.
 ## __JDK > JRM > JVM__
 Java 와 Kotlin으로 Application을 개발하고 실행하기 위해서는 JDK를 설치해야 한다.
-JDK(Java Development Kit)에는 컴파일러와 디버깅도구와 같은 개발도구와 함께 JRM이
+JDK(Java Development Kit)에는 컴파일러, 디버깅도구와 같은 개발도구와 함께 JRM이
 포함되어 있고, JRM(Java Runtime Environment)에는 프로그램 실행에 필요한 라이브러리,
 JVM을 포함한다.
 

@@ -1,7 +1,5 @@
 # GET_NEXT_LINE
    
-## 참고
-+ [파일 입출력](https://jihooyim1.gitbooks.io/unixbasic/content/contents/02.html)
 ## 1.파일 입출력
 + 파일 : 관련있는 데이터의 집합으로 데이터를 저장하는데는 물론 데이터를 전송하거나 장치를 접근하는데도 사용
 + 종류 : 유닉스에서 파일은 용도에 따라 일반파일(regular file)과 특수파일(special file)로 구분
@@ -99,3 +97,15 @@
     #ex2_4.out
     n=6, buf= Unix S
 	```
+   
+## 정적 변수
++ 정적 변수는 프로그램이 시작될 때 생성 및 초기화되고 프로그램이 끝날 때 사라진다.
++ 변수에 static을 붙여서 선언한다.
+	```c
+	static int	num;
+	```
++ 정적 변수는 선언할 때 초기값을 지정하지 않으면 0이 들어간다.
+   
+## 참고
++ [파일 입출력](https://jihooyim1.gitbooks.io/unixbasic/content/contents/02.html)
++ [정적 변수](https://dojang.io/mod/page/view.php?id=690)

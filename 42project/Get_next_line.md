@@ -1,7 +1,7 @@
 # GET_NEXT_LINE
    
 ## 참고
-+ 파일 입출력(https://jihooyim1.gitbooks.io/unixbasic/content/contents/02.html)
++ [파일 입출력](https://jihooyim1.gitbooks.io/unixbasic/content/contents/02.html)
 ## 1.파일 입출력
 + 파일 : 관련있는 데이터의 집합으로 데이터를 저장하는데는 물론 데이터를 전송하거나 장치를 접근하는데도 사용
 + 종류 : 유닉스에서 파일은 용도에 따라 일반파일(regular file)과 특수파일(special file)로 구분

@@ -105,6 +105,17 @@
 	static int	num;
 	```
 + 정적 변수는 선언할 때 초기값을 지정하지 않으면 0이 들어간다.
+
+## 파일 기술자(file descriptor)의 갯수
++ OPEN_MAX : limit.h에 정의되어 있는 매크로
+    + 클러스터기준 경로 vim /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include/sys/syslimits.h
+    + max open files per process - todo, make a config option?
+    + 10240으로 정의되어 있다.
++ 256 : 맥의 기본 설정(ulimit -Sn)
+    + 기본 설정이고 변경이 가능하다(ulimit -Hn)
++ 1024 : Linux 기본설정
+    + [Sun](https://docs.oracle.com/cd/E19476-01/821-0505/file-descriptor-requirements.html)의 문서에 따르면
+    Linux의 기본설정이고 프로세스의 성능향상을 위해 제한을 걸어둠
    
 ## 참고
 + [파일 입출력](https://jihooyim1.gitbooks.io/unixbasic/content/contents/02.html)

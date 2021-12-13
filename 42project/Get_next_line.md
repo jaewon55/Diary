@@ -120,3 +120,4 @@
 ## 참고
 + [파일 입출력](https://jihooyim1.gitbooks.io/unixbasic/content/contents/02.html)
 + [정적 변수](https://dojang.io/mod/page/view.php?id=690)
++ [파일 기술자](https://techblog.woowahan.com/2569/)

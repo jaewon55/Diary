@@ -118,7 +118,7 @@
     Linux의 기본설정이고 프로세스의 성능향상을 위해 제한을 걸어둠
 + `open()`함수의 반환형은 int형이기 때문에 file descriptor의 최댓값은 2,147,483,647 ?
 + 결론 : 시스템마다 파일 기술자의 최댓값은 다르기 때문에 OPEN_MAX 매크로를 사용하는 것이 이상적이지만
-norminette의 형식을 지키기 위해서는 연결리스트로 구현하는 것이 가장 완벽한 작성인 것 같다.
+        norminette의 형식을 지키기 위해서는 연결리스트로 구현하는 것이 가장 완벽한 작성인 것 같다.
    
 ## 참고
 + [파일 입출력](https://jihooyim1.gitbooks.io/unixbasic/content/contents/02.html)

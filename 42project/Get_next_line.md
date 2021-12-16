@@ -98,15 +98,7 @@
     n=6, buf= Unix S
 	```
    
-## 정적 변수
-+ 정적 변수는 프로그램이 시작될 때 생성 및 초기화되고 프로그램이 끝날 때 사라진다.
-+ 변수에 static을 붙여서 선언한다.
-	```c
-	static int	num;
-	```
-+ 정적 변수는 선언할 때 초기값을 지정하지 않으면 0이 들어간다.
-
-## 파일 기술자(file descriptor)의 갯수
+### 1-2.파일 기술자(file descriptor)의 갯수
 + OPEN_MAX : limit.h에 정의되어 있는 매크로
     + 클러스터기준 경로 vim /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include/sys/syslimits.h
     + max open files per process - todo, make a config option?
@@ -120,7 +112,15 @@
 + 결론 : 시스템마다 파일 기술자의 최댓값은 다르기 때문에 OPEN_MAX 매크로를 사용하는 것이 이상적이지만
         norminette의 형식을 지키기 위해서는 연결리스트로 구현하는 것이 가장 완벽한 작성인 것 같다.
    
+## 2.정적 변수
++ 정적 변수는 프로그램이 시작될 때 생성 및 초기화되고 프로그램이 끝날 때 사라진다.
++ 변수에 static을 붙여서 선언한다.
+	```c
+	static int	num;
+	```
++ 정적 변수는 선언할 때 초기값을 지정하지 않으면 0이 들어간다.
+   
 ## 참고
 + [파일 입출력](https://jihooyim1.gitbooks.io/unixbasic/content/contents/02.html)
-+ [정적 변수](https://dojang.io/mod/page/view.php?id=690)
 + [파일 기술자](https://techblog.woowahan.com/2569/)
++ [정적 변수](https://dojang.io/mod/page/view.php?id=690)

@@ -21,6 +21,39 @@
 + `va_arg(va_list ap, type)` : 가변 인수를 실제로 읽어 ap에 다음 인수의 주소를 넣고, 현재 인수의 값을 반환한다.
 + `va_end(ap)` : 가변 인수를 다 사용 후 처리(NULL)를 하는 매크로다.
    
+## 2.printf
++ 정의 : printf함수는 format을 표준출력(stdout)으로 출력한다.
+	```c
+	int	printf(const char *restrict format, ...);
+	```
+	+ format : format은 일반적인 문자열과 형식 명세서(conversion specifaction)를 포함하고 있다.
+	+ 형식 명세서(conversion specifaction) : 형식 명세서는 %로 시작되며 서식 지정자(conversion specifier)로 끝나는 형식이다. %문자와 서식 지정자 사이에는 4개의 옵션을 지정할 수 있다..
+   
+### 2-1.형식 명세서(?)
++ 옵션 : ```%[flags][width][.precision][length modifier]conversion specifier```
+	+ % : 형식 명세서의 시작점
+	+ flage : optional으로 여러 옵션을 지정할 수 있다.
+		```
+		- : 필드 내에서 좌측정렬(기본값 : 우측 정렬)
+		+ : 표시되는 숫자가 항상 + 또는 - 부호를 달게 된다.(기본값 : - 부호만 붙는다.)
+		space : 음이 아닌 숫자의 앞에 빈칸이 오게 된다.(+플래그는 space플래그를 덮어쓴다.)
+		# : 8진수는 0으로, 0이 아닌 16진수는 0x(0X)로 시작한다. 소수는 항상 소수점을 표시한다.
+		0(zero) : 필드 너비를 꽉 채울 때까지 0이 숫자 앞에 붙는다. g, i, o, u, x, X 변환이고 precision이 지정된 경우 부시된다.(-플래그는 0플래그를 덮어쓴다.)
+		```
+	+ minimum field width : optional으로 출력될 최소 넓이를 지정하여 공백이 왼쪽에 추가되어 좌측 정렬된다.
+	+ .precision : optional으로 뒤에 오는 서식 지정자에 따라 의미가 달라진다.
+		```
+		d, i, o, u, x, X : 숫자들의 최소 개수(만약 더 적은 숫자만으로 표시되는 경우 0이 앞쪽에 추가됨)
+		a, A, e, E, f, F : 소수점 이후에 오는 숫자의 개수
+					g, G : 유효숫자의 개수
+					   s : 바이트의 최대 숫자
+		```
+		+ precision은 .뒤에 정수가 오거나 문자 *이 온다. *이 온 경우 precision은 다음 인자로부터 얻어진다.
+		+ 만약 인자가 음수인 경우 precision을 지정하지 않은 것과 같게 된다.
+		+ .문자만 사용된 경우 precision은 0이 된다.
+	+ length modifier : optional으로 length modifier가 존재하면 서식 지정자의 일반적인 형식 보다 길거나 짧다는 것을 의미한다.
+	<img src = https://t1.daumcdn.net/cfile/tistory/2276194658544EE12B>
+
 ## 참고
 + [가변 인자](https://dojang.io/mod/page/view.php?id=577)
 + [stdarg.h](https://jangsalt.tistory.com/entry/%EA%B0%80%EB%B3%80-%EC%9D%B8%EC%88%98-vastart-vaend-vaarg-valist) 

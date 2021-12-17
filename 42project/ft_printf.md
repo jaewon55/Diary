@@ -27,7 +27,8 @@
 	int	printf(const char *restrict format, ...);
 	```
 	+ format : format은 일반적인 문자열과 형식 명세서(conversion specifaction)를 포함하고 있다.
-	+ 형식 명세서(conversion specifaction) : 형식 명세서는 %로 시작되며 서식 지정자(conversion specifier)로 끝나는 형식이다. %문자와 서식 지정자 사이에는 4개의 옵션을 지정할 수 있다..
+	+ 형식 명세서(conversion specifaction) : 형식 명세서는 %로 시작되며 서식 지정자(conversion specifier)로 끝나는 형식이다. %문자와 서식 지정자 사이에는 4개의 옵션을 지정할 수 있다.
++ 반환값 : printf를 통해 성공적으로 출력이 완료되면 출력한 문자(character)들의 개수를 반환한다.
    
 ### 2-1.형식 명세서(?)
 + 옵션 : ```%[flags][width][.precision][length modifier]conversion specifier```

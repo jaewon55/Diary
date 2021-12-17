@@ -54,7 +54,9 @@
 		+ .문자만 사용된 경우 precision은 0이 된다.
 	+ length modifier : optional으로 length modifier가 존재하면 서식 지정자의 일반적인 형식 보다 길거나 짧다는 것을 의미한다.
 		<img src = https://t1.daumcdn.net/cfile/tistory/2276194658544EE12B>
-
+	+ conversion specifier : 형식 명세서의 마지막. default argument promotion 덕분에 가변 인자를 갖는 함수에 전달된 float인자는 double로 자동적으로 변환된다. (printf로 전달된 char인자는 int로 변환된다.)
+		<img src = https://t1.daumcdn.net/cfile/tistory/246AB546585460CB03>
 ## 참고
 + [가변 인자](https://dojang.io/mod/page/view.php?id=577)
 + [stdarg.h](https://jangsalt.tistory.com/entry/%EA%B0%80%EB%B3%80-%EC%9D%B8%EC%88%98-vastart-vaend-vaarg-valist) 
++ [서식 지정자](https://ziegler.tistory.com/88)

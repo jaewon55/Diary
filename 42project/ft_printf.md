@@ -38,7 +38,8 @@
 		+ : 표시되는 숫자가 항상 + 또는 - 부호를 달게 된다.(기본값 : - 부호만 붙는다.)
 		space : 음이 아닌 숫자의 앞에 빈칸이 오게 된다.(+플래그는 space플래그를 덮어쓴다.)
 		# : 8진수는 0으로, 0이 아닌 16진수는 0x(0X)로 시작한다. 소수는 항상 소수점을 표시한다.
-		0(zero) : 필드 너비를 꽉 채울 때까지 0이 숫자 앞에 붙는다. g, i, o, u, x, X 변환이고 precision이 지정된 경우 부시된다.(-플래그는 0플래그를 덮어쓴다.)
+		0(zero) : 필드 너비를 꽉 채울 때까지 0이 숫자 앞에 붙는다.
+				  g, i, o, u, x, X 변환이고 precision이 지정된 경우 무시된다.(-플래그는 0플래그를 덮어쓴다.)
 		```
 	+ minimum field width : optional으로 출력될 최소 넓이를 지정하여 공백이 왼쪽에 추가되어 좌측 정렬된다.
 	+ .precision : optional으로 뒤에 오는 서식 지정자에 따라 의미가 달라진다.
@@ -52,7 +53,7 @@
 		+ 만약 인자가 음수인 경우 precision을 지정하지 않은 것과 같게 된다.
 		+ .문자만 사용된 경우 precision은 0이 된다.
 	+ length modifier : optional으로 length modifier가 존재하면 서식 지정자의 일반적인 형식 보다 길거나 짧다는 것을 의미한다.
-	<img src = https://t1.daumcdn.net/cfile/tistory/2276194658544EE12B>
+		<img src = https://t1.daumcdn.net/cfile/tistory/2276194658544EE12B>
 
 ## 참고
 + [가변 인자](https://dojang.io/mod/page/view.php?id=577)

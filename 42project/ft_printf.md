@@ -31,7 +31,7 @@
 + 반환값 : printf를 통해 성공적으로 출력이 완료되면 출력한 문자(character)들의 개수를 반환한다.
    
 ### 2-1.형식 명세서(?)
-+ 옵션 : ```%[flags][width][.precision][length modifier]conversion specifier```
++ 옵션 : ```%[flags][width][.precision][length modifier][conversion specifier]```
 	+ % : 형식 명세서의 시작점
 	+ flage : optional으로 여러 옵션을 지정할 수 있다.
 		```
@@ -57,7 +57,13 @@
 		<img src = https://t1.daumcdn.net/cfile/tistory/2276194658544EE12B>
 	+ conversion specifier : 형식 명세서의 마지막. default argument promotion 덕분에 가변 인자를 갖는 함수에 전달된 float인자는 double로 자동적으로 변환된다. (printf로 전달된 char인자는 int로 변환된다.)
 		<img src = https://t1.daumcdn.net/cfile/tistory/246AB546585460CB03>
+   
+## 3 순환(recursive)Make
++ 정의 : 프로젝트의 규모가 큰 경우 각 모듈 디렉토리 별로 Makefile을 두어 독립적으로 관리하게 된다. 실행시 처음 실행되는 Makefile을 top Makefile이라고 하고 여기서 전체적인 설정과 각 모듈별 의존관계를 설정 후 하나의 Makefile이 실행되는것 처럼 일괄 빌드하는 것을 recursive make라고 한다.
++ sub-make 실행 : top Makefile에서 `$(MAKE) -C [경로] [옵션, 명령]`
+
 ## 참고
 + [가변 인자](https://dojang.io/mod/page/view.php?id=577)
 + [stdarg.h](https://jangsalt.tistory.com/entry/%EA%B0%80%EB%B3%80-%EC%9D%B8%EC%88%98-vastart-vaend-vaarg-valist) 
 + [서식 지정자](https://ziegler.tistory.com/88)
++ [Recursive Make](https://mug896.github.io/make-script/recursive_make.html)

@@ -26,13 +26,13 @@
 	```c
 	int	printf(const char *restrict format, ...);
 	```
-	+ format : format은 일반적인 문자열과 형식 명세서(conversion specifaction)를 포함하고 있다.
-	+ 형식 명세서(conversion specifaction) : 형식 명세서는 %로 시작되며 서식 지정자(conversion specifier)로 끝나는 형식이다. %문자와 서식 지정자 사이에는 4개의 옵션을 지정할 수 있다.
+	+ format : format은 일반적인 문자열과 서식 지정(conversion specifaction)을 포함하고 있다.
+	+ 서식 지정(conversion specifaction) : 서식 지정은 %로 시작되며 서식 지정자(conversion specifier)로 끝나는 형식이다. %문자와 서식 지정자 사이에는 4개의 옵션을 지정할 수 있다.
 + 반환값 : printf를 통해 성공적으로 출력이 완료되면 출력한 문자(character)들의 개수를 반환한다.
    
 ### 2-1.서식 지정(conversion specifaction)
 + 옵션 : ```%[flags][width][.precision][length modifier][conversion specifier]```
-	+ % : 형식 명세서의 시작점
+	+ % : 서식 지정의 시작점
 	+ flage : optional으로 여러 옵션을 지정할 수 있다.
 		```
 		- : 필드 내에서 좌측정렬(기본값 : 우측 정렬)
@@ -55,7 +55,7 @@
 		+ .문자만 사용된 경우 precision은 0이 된다.
 	+ length modifier : optional으로 length modifier가 존재하면 서식 지정자의 일반적인 형식 보다 길거나 짧다는 것을 의미한다.
 		<img src = https://t1.daumcdn.net/cfile/tistory/2276194658544EE12B>
-	+ conversion specifier : 형식 명세서의 마지막. default argument promotion 덕분에 가변 인자를 갖는 함수에 전달된 float인자는 double로 자동적으로 변환된다. (printf로 전달된 char인자는 int로 변환된다.)
+	+ conversion specifier : 서식 지정의 마지막. default argument promotion 덕분에 가변 인자를 갖는 함수에 전달된 float인자는 double로 자동적으로 변환된다. (printf로 전달된 char인자는 int로 변환된다.)
 		<img src = https://t1.daumcdn.net/cfile/tistory/246AB546585460CB03>
    
 ### 2-2.진수별 표기법(2/8/16진수)

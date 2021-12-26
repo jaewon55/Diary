@@ -16,10 +16,10 @@
 + `va_list` : 가변 인수를 읽기 위한 포인터 변수
 	+ 함수의 매개변수는 스택에 저장되고 이러한 변수를 각각 읽어오기 위해서는 포인터 연산이 필요하다. va_list는 가변 인자를 읽어오기 위한 자료형으로 char *형으로 정의되어 있다.
 	+ 변수명은 관습적으로 ap(argument pointer)를 사용한다.
-+ `va_start(va_list ap, argN)` : va_arg()를 실행하기전 고정 매개변수(argN)를 이용해 ap를 가변 인자의 시작주소로 설정한다.
-+ `va_copy(va_list dest, va_list src)` : dest를 src의 복사본으로 초기화한다.
-+ `va_arg(va_list ap, type)` : 가변 인수를 실제로 읽어 ap에 다음 인수의 주소를 넣고, 현재 인수의 값을 반환한다.
-+ `va_end(ap)` : 가변 인수를 다 사용 후 처리(NULL)를 하는 매크로다.
++ `void va_start(va_list ap, argN)` : va_arg()를 실행하기전 고정 매개변수(argN)를 이용해 ap를 가변 인자의 시작주소로 설정한다.
++ `void va_copy(va_list dest, va_list src)` : dest를 src의 복사본으로 초기화한다.
++ `type va_arg(va_list ap, type)` : 가변 인수를 실제로 읽어 ap에 다음 인수의 주소를 넣고, 현재 인수의 값을 반환한다.
++ `void va_end(ap)` : 가변 인수를 다 사용 후 처리(NULL)를 하는 매크로다.
    
 ## 2.printf
 + 정의 : printf함수는 format을 표준출력(stdout)으로 출력한다.

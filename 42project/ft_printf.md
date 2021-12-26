@@ -30,7 +30,7 @@
 	+ 형식 명세서(conversion specifaction) : 형식 명세서는 %로 시작되며 서식 지정자(conversion specifier)로 끝나는 형식이다. %문자와 서식 지정자 사이에는 4개의 옵션을 지정할 수 있다.
 + 반환값 : printf를 통해 성공적으로 출력이 완료되면 출력한 문자(character)들의 개수를 반환한다.
    
-### 2-1.형식 명세서(?)
+### 2-1.서식 지정(conversion specifaction)
 + 옵션 : ```%[flags][width][.precision][length modifier][conversion specifier]```
 	+ % : 형식 명세서의 시작점
 	+ flage : optional으로 여러 옵션을 지정할 수 있다.
@@ -57,6 +57,14 @@
 		<img src = https://t1.daumcdn.net/cfile/tistory/2276194658544EE12B>
 	+ conversion specifier : 형식 명세서의 마지막. default argument promotion 덕분에 가변 인자를 갖는 함수에 전달된 float인자는 double로 자동적으로 변환된다. (printf로 전달된 char인자는 int로 변환된다.)
 		<img src = https://t1.daumcdn.net/cfile/tistory/246AB546585460CB03>
+   
+### 2-2.진수별 표기법(2/8/16진수)
++ 각 진수별 22표기법
+```c
+int	binary = 0b10110 // 0B10110
+int	octal = 026
+int	hex	= 0x16 // 0X16
+```
    
 ## 3 순환(recursive)Make
 + 정의 : 프로젝트의 규모가 큰 경우 각 모듈 디렉토리 별로 Makefile을 두어 독립적으로 관리하게 된다. 실행시 처음 실행되는 Makefile을 top Makefile이라고 하고 여기서 전체적인 설정과 각 모듈별 의존관계를 설정 후 하나의 Makefile이 실행되는것 처럼 일괄 빌드하는 것을 recursive make라고 한다.

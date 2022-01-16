@@ -20,3 +20,40 @@ override fun onCreate(savedInstanceState: Bundle?) {
     + R.layout.activity_main을 참조한다는 의미(실제로는 정수값)
         + R.layout.activity_main은 R클래스의 layout폴더의 activity_main(확장자 제외)파일을 의미한다.
     + R클래스는 앱을 빌드하면 생성되는 클래스로 rec디렉터리를 포함한 앱의 모든 정보를 담고 있다. R클래스를 이용해 앱의 많은 리소스(이미지, 문자열, 레이아웃 파일의 요소 등)를 참조할 수 있다.
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout   
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!" />
+
+</LinearLayout>
+```
++ View와 ViewGroup
+    + 모든 view(group)는 최상위 view를 root로 해서 계층 구조로 형성된다. 앱이 실행되면 view의 계층 구조는 객체의 계층 구조로 전환된다.
+    + LinearLayout은 하위 view를 하나씩 선형(수직 또는 수평)으로 구성
+    + ConstraintLayout은 디자인 편집기와 호환이 잘되는 view container
+```
+android:id="@+id/roll_button"
+```
++ "@+id"접두사는 컴파일러에게 ID상수를 R클래스에 추가하라고 지시한다.
+
+## API levels
++ Gradle Scripts의 build.gradle(mdule:app)에서 해당 모듈이 지원하는 Android API수준을 확인할 수 있다.
+    + compileSdkVersin - 앱이 지원할 수 있는 최신 버전의 안드로이드
+    + targetSdkVersion - 최근 앱을 테스트 한 API (대부분 compileSdkVersion과 동일)
+    + minSdkVersion - 앱이 지원할 수 있는 가장 오래된 버전
++ Android Jetpack은 구글이 개발한 라이브러리 모음으로 이전 버전의 안드로이드를 지원하는데 도움이 되는 하위 클래스 및 기능을 제공한다.
+    + vector drawables	xml로 작성된 verctor drawable은 일반적인 PNG파일보다 훨씬 적은 크기를 가진다. 하지만 vector drawables는 API level 21이상의 장치에서만 지원이 되기 때문에 그 이하의 장치에서는 vector파일을PNG파일로 변환되어 사용되기 때문에 앱의 크기가 커지는 단점이 있다.
+    + 이러한 문제를 Android X 호환 라이브러리를 이용해 API레벨 7까지 vector drawable을 지원할 수 있다.
+    + build..gradle (Module:app)에서 defaultCnfig에 ```vectorDrawables.useSupportLibrary = true```을 추가후 동기화
+    + activity의 layout폴더의 root view 에 ```xmlns:app="http://schemas.android.com/apk/res-auto"```을 추가 후 <<ImageView>>의 android:src를 app:srcCompat로 변경한다.

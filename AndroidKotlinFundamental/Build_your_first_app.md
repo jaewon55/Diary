@@ -55,5 +55,6 @@ android:id="@+id/roll_button"
 + Android Jetpack은 구글이 개발한 라이브러리 모음으로 이전 버전의 안드로이드를 지원하는데 도움이 되는 하위 클래스 및 기능을 제공한다.
     + vector drawables	xml로 작성된 verctor drawable은 일반적인 PNG파일보다 훨씬 적은 크기를 가진다. 하지만 vector drawables는 API level 21이상의 장치에서만 지원이 되기 때문에 그 이하의 장치에서는 vector파일을PNG파일로 변환되어 사용되기 때문에 앱의 크기가 커지는 단점이 있다.
     + 이러한 문제를 Android X 호환 라이브러리를 이용해 API레벨 7까지 vector drawable을 지원할 수 있다.
-    + build..gradle (Module:app)에서 defaultCnfig에 ```vectorDrawables.useSupportLibrary = true```을 추가후 동기화
-    + activity의 layout폴더의 root view 에 ```xmlns:app="http://schemas.android.com/apk/res-auto"```을 추가 후 `<ImageView>`의 android:src를 app:srcCompat로 변경한다.
+    + build..gradle (Module:app)에서 defaultCnfig에 `vectorDrawables.useSupportLibrary = true`을 추가후 동기화
+    + activity의 layout폴더의 root view 에 `xmlns:app="http://schemas.android.com/apk/res-auto"`을 추가
+    + `<ImageView>`의 android:src를 app:srcCompat로 변경한다.

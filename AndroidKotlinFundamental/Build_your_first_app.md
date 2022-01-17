@@ -72,6 +72,7 @@ android:id="@+id/roll_button"
     ```
     + `build.gradle(Module:app)`에 위의 코드를 추가 후 동기화한다. 이후 각 XML레이아웃 파일에 대한 바인딩 클래스가 자동으로 생성된다.
         + 예) `activity_main.xml`파일은 `ActivityMainBindig`이라는 바인딩 클래스가 생성됨
+
     ```kotlin
     private lateinit var binding: ActivityMainBinding
 
@@ -83,6 +84,7 @@ android:id="@+id/roll_button"
     }
     ```
     + binding변수를 `ActivityMainBinding`클래스로 선언하고 `setContentView()`에 해당 layout의 root를 넣는다.
+    
     ```kotlin
     binding.name.text = "test"
     binding.button.setOnClickListener { viewModel.userClicked() }

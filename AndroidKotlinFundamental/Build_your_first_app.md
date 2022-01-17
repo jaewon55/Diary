@@ -19,7 +19,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 + setContentView(R.layout.activity_main)
     + R.layout.activity_main을 참조한다는 의미(실제로는 정수값)
         + R.layout.activity_main은 R클래스의 layout폴더의 activity_main(확장자 제외)파일을 의미한다.
-    + R클래스는 앱을 빌드하면 생성되는 클래스로 rec디렉터리를 포함한 앱의 모든 정보를 담고 있다. R클래스를 이용해 앱의 많은 리소스(이미지, 문자열, 레이아웃 파일의 요소 등)를 참조할 수 있다.
+    + R클래스는 앱을 빌드하면 생성되는 클래스로 res디렉터리를 포함한 앱의 모든 정보를 담고 있다. R클래스를 이용해 앱의 많은 리소스(이미지, 문자열, 레이아웃 파일의 요소 등)를 참조할 수 있다.
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -55,6 +55,39 @@ android:id="@+id/roll_button"
 + Android Jetpack은 구글이 개발한 라이브러리 모음으로 이전 버전의 안드로이드를 지원하는데 도움이 되는 하위 클래스 및 기능을 제공한다.
     + vector drawables	xml로 작성된 verctor drawable은 일반적인 PNG파일보다 훨씬 적은 크기를 가진다. 하지만 vector drawables는 API level 21이상의 장치에서만 지원이 되기 때문에 그 이하의 장치에서는 vector파일을PNG파일로 변환되어 사용되기 때문에 앱의 크기가 커지는 단점이 있다.
     + 이러한 문제를 Android X 호환 라이브러리를 이용해 API레벨 7까지 vector drawable을 지원할 수 있다.
-    + build..gradle (Module:app)에서 defaultCnfig에 `vectorDrawables.useSupportLibrary = true`을 추가후 동기화
+    + build.gradle (Module:app)에서 defaultCnfig에 `vectorDrawables.useSupportLibrary = true`을 추가후 동기화
     + activity의 layout폴더의 root view 에 `xmlns:app="http://schemas.android.com/apk/res-auto"`을 추가
     + `<ImageView>`의 android:src를 app:srcCompat로 변경한다.
+
+## View Binding
++ View Binding은 activity나 fragment에서 view와 상호 작용을 보다 편리하게 할 수 있도록 해주는 기능이다.
++ 사용
+    ```kotlin
+    android {
+        ...
+        buildFeatures {
+            viewBinding = true
+        }
+    }
+    ```
+    + `build.gradle(Module:app)`에 위의 코드를 추가 후 동기화한다. 이후 각 XML레이아웃 파일에 대한 바인딩 클래스가 자동으로 생성된다.
+        + 예) `activity_main.xml`파일은 `ActivityMainBindig`이라는 바인딩 클래스가 생성됨
+    ```kotlin
+    private lateinit var binding: ActivityMainBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+    }
+    ```
+    + binding변수를 `ActivityMainBinding`클래스로 선언하고 `setContentView()`에 해당 layout의 root를 넣는다.
+    ```kotlin
+    binding.name.text = "test"
+    binding.button.setOnClickListener { viewModel.userClicked() }
+    ```
+    + 이제 binding변수를 통해 layout의 id에 접근할 수 있게 된다.
++ findViewById()와 차이점
+    + 잘못된 view ID로 인해 발생할 수 있는 NPE에 대해 안전하고 잘못된 type을 사용할 때 발생할 수 있는 문제에 안전하다.
+    + -> layout과 activity의 잘못된 호환을 runtime에서의 에러가 아닌 compile단계에서 에러를 찾을 수 있어 에러를 보다 빠르게 찾을 수 있다.

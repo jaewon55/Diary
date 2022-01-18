@@ -46,7 +46,14 @@
 
     https://nostressdev.tistory.com/12
     + 데비안?
-    + LVM?
+    + LVM?(logical volume manager) 디스크나 대용량 스토리지 장치를 유연하고 확장 가능하게 다룰 수 있는 기술이며 이를 커널에 구현한 기능
         + 파티션?
+        + volume group? https://tech.cloud.nongshim.co.kr/2018/11/23/lvmlogical-volume-manager-1-%EA%B0%9C%EB%85%90/
+    + GRUB boot loader
     + aptitude 와 apt의 차이?
     + SELinux 와 AppArmor는 무엇인가?
+
+    파일 시스템 : https://mamu2830.blogspot.com/2019/10/chs-lba.html
+    하드 디스크 : https://mamu2830.blogspot.com/2019/10/blog-post_14.html
+    리눅스 마운트 : https://mamu2830.blogspot.com/2019/11/fdisk-df-etcfstab-blkid.html
+    lvm : https://mamu2830.blogspot.com/2019/12/lvmpv-vg-lv-pe-lvm.html

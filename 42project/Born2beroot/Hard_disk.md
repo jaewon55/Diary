@@ -1,0 +1,1 @@
+하드 디스크 : https://mamu2830.blogspot.com/2019/10/blog-post_14.html

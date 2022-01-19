@@ -57,3 +57,4 @@
     하드 디스크 : https://mamu2830.blogspot.com/2019/10/blog-post_14.html
     리눅스 마운트 : https://mamu2830.blogspot.com/2019/11/fdisk-df-etcfstab-blkid.html
     lvm : https://mamu2830.blogspot.com/2019/12/lvmpv-vg-lv-pe-lvm.html
+    VDI, VHD, VMDK : https://apophis0.tistory.com/48

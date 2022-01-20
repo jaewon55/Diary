@@ -58,3 +58,14 @@
     리눅스 마운트 : https://mamu2830.blogspot.com/2019/11/fdisk-df-etcfstab-blkid.html
     lvm : https://mamu2830.blogspot.com/2019/12/lvmpv-vg-lv-pe-lvm.html
     VDI, VHD, VMDK : https://apophis0.tistory.com/48
+    + sudo 설정 (https://velog.io/@appti/born2beroot-sudo-%EC%84%A4%EC%A0%95)
+    ```
+    Defaults	authfail_message="Authentication attempt failed custom."
+    Defaults	badpass_message="Wrong password custom."
+    Defaults	log_input
+    Defaults	log_output
+    Defaults	requiretty
+    Defaults	iolog_dir="/var/log/sudo/"
+    Defaults	passwd_tries=3
+    ```
+    + lvm만들기 (https://www.manualfactory.net/14379)

@@ -53,14 +53,14 @@
 	+ 코드가 짧아지고 가독성, 유지보수가 쉽다.
 	+ data와 view가 명확하게 구분된다.
 	+ 사용자가 앱을 사용할 때가 아니라 앱을 시작할 때 뷰를 한번만 탐색해서 정보를 가져온다.
-+ layout과 activity연결
++ layout과 activity연결<br\>
 	```gradle
 	buildFeatures {
 		dataBinding true
 	}
 	```
 	+ `build.gradle(Module:app)`에 위의 코드를 추가 후 동기화한다.
-	`<layout>`태그를 xml의 root view로 사용   
+	`<layout>`태그를 xml의 root view로 사용<br\>
 	```kotlin
 	lateinit var binding: ActivityMainBinding
 	override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,7 +68,7 @@
 		binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 	}
 	```
-	+ binding변수를 선언하고 `setcontentview()`를 `binding = DataBindingUtil.setContentView(this, R.layout.activity_main)`으로 변경한다.   
+	+ binding변수를 선언하고 `setcontentview()`를 `binding = DataBindingUtil.setContentView(this, R.layout.activity_main)`으로 변경한다.<br\>
 + view에서 data를 사용
 	```xml
 	<data>
@@ -77,19 +77,15 @@
 			type="com.example.android.aboutme.MyName" />
 	</data>
 	```
-	+ `<layout>`태그 안에 `<data>`태그를 추가하고 `<variable>`의 name과 type(data class의 경로)을 지정한다.      
-</br>
+	+ `<layout>`태그 안에 `<data>`태그를 추가하고 `<variable>`의 name과 type(data class의 경로)을 지정한다.<br\>
 	```xml
 	android:text="@={myName.name}"
 	```
-	+ `"@={}"`표기법을 통해 데이터를 지정할 수 있다.    
-
-
+	+ `"@={}"`표기법을 통해 데이터를 지정할 수 있다.<br\>
 	```kotlin
 	binding.apply {
             myName?.nickname = nicknameEdit.text.toString()
             invalidateAll()
         }
 	```
-	+ 사용자와 상호작용 중 data class의 data가 변경되어 이를 적용하고자 할 때는 `invalidateAll()`(binding expression)을 사용해 이전의 데이터를 무효화하고 새로운 데이터를 적용한다.      
-
+	+ 사용자와 상호작용 중 data class의 data가 변경되어 이를 적용하고자 할 때는 `invalidateAll()`(binding expression)을 사용해 이전의 데이터를 무효화하고 새로운 데이터를 적용한다.<br\>

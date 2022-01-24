@@ -47,7 +47,7 @@
 	<img src="https://developer.android.com/codelabs/kotlin-android-training-constraint-layout/img/91ca5b204a0141ed.png">
 
 	+ weighted : view가 layout_constraint(Horizontal/Vertical)_weight 속성에 설성된 값에 따라 모두 채운다.      
-	
+
 ## Data binding
 + binding객체를 통해 view와 데이터에 접근할 수 있다.
 	+ 코드가 짧아지고 가독성, 유지보수가 쉽다.
@@ -77,15 +77,17 @@
 			type="com.example.android.aboutme.MyName" />
 	</data>
 	```
-	+ `<layout>`태그 안에 `<data>`태그를 추가하고 `<variable>`의 name과 type(data class의 경로)을 지정한다.   
+	+ `<layout>`태그 안에 `<data>`태그를 추가하고 `<variable>`의 name과 type(data class의 경로)을 지정한다.      
+
 	```xml
 	android:text="@={myName.name}"
 	```
-	+ `"@={}"`표기법을 통해 데이터를 지정할 수 있다.   
+	+ `"@={}"`표기법을 통해 데이터를 지정할 수 있다.    
+
 	```kotlin
 	binding.apply {
             myName?.nickname = nicknameEdit.text.toString()
             invalidateAll()
         }
 	```
-	+ 사용자와 상호작용 중 data class의 data가 변경되어 이를 적용하고자 할 때는 `invalidateAll()`(binding expression)을 사용해 이전의 데이터를 무효화하고 새로운 데이터를 적용한다.   
+	+ 사용자와 상호작용 중 data class의 data가 변경되어 이를 적용하고자 할 때는 `invalidateAll()`(binding expression)을 사용해 이전의 데이터를 무효화하고 새로운 데이터를 적용한다.      

@@ -31,14 +31,23 @@
 ## chain
 + chain은 수직 또는 수평으로 서로 연결된 view들의 그룹이다. chain의 첫 번째 view가 해당 chain의 head로 chain의 위치와 배치를 제어한다.
 + style : chain은 정렬되는 방식에 따라 스타일이 나뉜다.
+
 	<img src="https://developer.android.com/codelabs/kotlin-android-training-constraint-layout/img/d57e8cdbe225181f.png">
+
 	+ spread : 기본 스타일으로 모든 view가 같은 여백을 가진다.
+
 	<img src="https://developer.android.com/codelabs/kotlin-android-training-constraint-layout/img/8ee14c6b5164afef.png">
+
 	+ spread inside : 양 끝의 view들이 부모 view와 붙어 있고 나머지 view가 같은 여백을 가진다.
+
 	<img src="https://developer.android.com/codelabs/kotlin-android-training-constraint-layout/img/16bb057b065865c6.png">
+
 	<img src="https://developer.android.com/codelabs/kotlin-android-training-constraint-layout/img/c893437f3a9c3f06.png">
+
 	+ packed : view들이 뭉쳐있고 margin을 계산한 후 haed view의 위치에 따라 chain의 위치를 조정할 수 있다.
+
 	<img src="https://developer.android.com/codelabs/kotlin-android-training-constraint-layout/img/91ca5b204a0141ed.png">
+	
 	+ weighted : view가 layout_constraint(Horizontal/Vertical)_weight 속성에 설성된 값에 따라 모두 채운다.
 
 ## Data binding

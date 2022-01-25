@@ -53,11 +53,11 @@
     + aptitude 와 apt의 차이?
     + SELinux 와 AppArmor는 무엇인가?
 
-    파일 시스템 : https://mamu2830.blogspot.com/2019/10/chs-lba.html
-    하드 디스크 : https://mamu2830.blogspot.com/2019/10/blog-post_14.html
-    리눅스 마운트 : https://mamu2830.blogspot.com/2019/11/fdisk-df-etcfstab-blkid.html
-    lvm : https://mamu2830.blogspot.com/2019/12/lvmpv-vg-lv-pe-lvm.html
-    VDI, VHD, VMDK : https://apophis0.tistory.com/48
+    파일 시스템 : https://mamu2830.blogspot.com/2019/10/chs-lba.html   
+    하드 디스크 : https://mamu2830.blogspot.com/2019/10/blog-post_14.html   
+    리눅스 마운트 : https://mamu2830.blogspot.com/2019/11/fdisk-df-etcfstab-blkid.html   
+    lvm : https://mamu2830.blogspot.com/2019/12/lvmpv-vg-lv-pe-lvm.html   
+    VDI, VHD, VMDK : https://apophis0.tistory.com/48   
     + sudo 설정 (https://velog.io/@appti/born2beroot-sudo-%EC%84%A4%EC%A0%95)
     ```
     Defaults	authfail_message="Authentication attempt failed custom."

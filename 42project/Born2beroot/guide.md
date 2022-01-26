@@ -127,25 +127,27 @@
         ```apt install libpam-cracklib```
         + 비밀번호의 강도를 설정하고 검사하는 모듈인 libpam-cracklib를 설치
         + 정책 옵션
-            + debug : 모듈이 동작을 보여주기 위해 syslog에 정보를 남긴다.
-            + type=LINUX : 모듈의 기본 동작은 패스워드를 물어 볼때 LINUX라고 바꿀
-            + retry=N : 암호 입력 재시도 가능 횟수
-            + difok=N : 이전 암호와 비교해서 최소 N개 이상의 문자가 달라야 함
-            + minlen=N : 암호의 최소 길이 설정
-            + dcredit=N : (N < 0) 암호가 포함해야하는 숫자의 최소 개수
-                          (N >= 0) 숫자가 가질 수 있는 크레딧값의 최대값
-            + ucredit=N : (N < 0) 암호가 포함해야하는 대문자의 최소 개수
-                          (N >= 0) 대문자가 가질 수 있는 크레딧값의 최대값
-            + lcredit=N : (N < 0) 암호가 포함해야하는 소문자의 최소 개수
-                          (N >= 0) 소문자가 가질 수 있는 크레딧값의 최대값
-            + ocredit=N : (N < 0) 암호가 포함해야하는 숫자의 특수문자 개수
-                          (N >= 0) 특수문자가 가질 수 있는 크레딧값의 최대값
-            + minclass=N : 암호에 있어야 하는 최소 문자 종류
-            + maxrepeat=N : 연속된 같은 문자를 N개까지만 허용
-            + maxsequence=N : 단순한 나열의 문자를 N개까지만 허용
-            + maxclassrepeat=N : 같은 종류의 문자를 N개까지만 허용
-            + reject_username : 암호가 계정의 이름을 포함하는지 검사
-            + enforce_for_root : root계정에도 상기의 옵션을 적용   
+        ```
+            debug : 모듈이 동작을 보여주기 위해 syslog에 정보를 남긴다.
+            type=LINUX : 모듈의 기본 동작은 패스워드를 물어 볼때 LINUX라고 바꿀
+            retry=N : 암호 입력 재시도 가능 횟수
+            difok=N : 이전 암호와 비교해서 최소 N개 이상의 문자가 달라야 함
+            minlen=N : 암호의 최소 길이 설정
+            dcredit=N : (N < 0) 암호가 포함해야하는 숫자의 최소 개수
+                        (N >= 0) 숫자가 가질 수 있는 크레딧값의 최대값
+            ucredit=N : (N < 0) 암호가 포함해야하는 대문자의 최소 개수
+                        (N >= 0) 대문자가 가질 수 있는 크레딧값의 최대값
+            lcredit=N : (N < 0) 암호가 포함해야하는 소문자의 최소 개수
+                        (N >= 0) 소문자가 가질 수 있는 크레딧값의 최대값
+            ocredit=N : (N < 0) 암호가 포함해야하는 숫자의 특수문자 개수
+                        (N >= 0) 특수문자가 가질 수 있는 크레딧값의 최대값
+            minclass=N : 암호에 있어야 하는 최소 문자 종류
+            maxrepeat=N : 연속된 같은 문자를 N개까지만 허용
+            maxsequence=N : 단순한 나열의 문자를 N개까지만 허용
+            maxclassrepeat=N : 같은 종류의 문자를 N개까지만 허용
+            reject_username : 암호가 계정의 이름을 포함하는지 검사
+            enforce_for_root : root계정에도 상기의 옵션을 적용
+        ```
         ```minlen=10 difok=7 dcredit=-1 lcredit=-1 ucredit=-1 maxrepeat=3 reject_username enforce_for_root```
 
 ## 새로운 유저 추가

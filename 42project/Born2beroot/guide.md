@@ -145,7 +145,7 @@
             + maxsequence=N : 단순한 나열의 문자를 N개까지만 허용
             + maxclassrepeat=N : 같은 종류의 문자를 N개까지만 허용
             + reject_username : 암호가 계정의 이름을 포함하는지 검사
-            + enforce_for_root : root계정에도 상기의 옵션을 적용
+            + enforce_for_root : root계정에도 상기의 옵션을 적용   
         ```minlen=10 difok=7 dcredit=-1 lcredit=-1 ucredit=-1 maxrepeat=3 reject_username enforce_for_root```
 
 ## 새로운 유저 추가

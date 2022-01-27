@@ -159,3 +159,4 @@
 + 새계정의 비밀번호 지정
 ```vim /etc/default/useradd```
 + 새계정의 기본셀을 bash셀로 지정
+

@@ -69,3 +69,11 @@
     Defaults	passwd_tries=3
     ```
     + lvm만들기 (https://www.manualfactory.net/14379)
+
+가상머신의 기본 기능
+선택한 OS
+Centos 와 Debian의 기본적인 차이
+aptitude와 apt의 차이
+APPArmor는 무엇인가?
+hostname 수정
+LVM?

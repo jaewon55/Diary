@@ -86,16 +86,19 @@
 ## 비밀번호 정책
 + passwd \[option\] \[계정\] : 기본적으로 비밀번호를 변경하는 명령이지만 계정을 사용하지 못하게 하거나, 패스워드 만기일 및 유효기간 등을 설정할 수 있다.
     + 옵션
-        + -a : all이라는 뜻으로 -S옵션과 같이 쓰여 모든 사용자에 대한 비밀번호 정보를 보여준다.
-        + -S : satus 사용자에 대한 비밀번호 정보를 알 수 있다.
-        + -l : lock 사용자의 비밀번호에 잠금을 걸어 로그인을 막는다.
-        + -u : unlock 사용자에게 설정되어 있는 잠금을 푼다.
-        + -n : 패스워드 변경까지의 최소 날짜를 설정한다. 패스워드 변경 후 최소로 사용해야 되는 날짜수
-        + -x : 현재 패스워드의 유효기간을 지정한다.
-        + -w : 패스워드 만료 전 경고 날짜를 지정한다.
-        + -i : 패스워드 만료된 뒤 사용자 계정 사용이 실제 로그인이 불가능하게 되기까지 유예기간을 설정
-        + -e : 다음 로그인 시에 반드시 패스워드를 변경하도록 할 때 사용한다.
+    ```
+        -a : all이라는 뜻으로 -S옵션과 같이 쓰여 모든 사용자에 대한 비밀번호 정보를 보여준다.
+        -S : satus 사용자에 대한 비밀번호 정보를 알 수 있다.
+        -l : lock 사용자의 비밀번호에 잠금을 걸어 로그인을 막는다.
+        -u : unlock 사용자에게 설정되어 있는 잠금을 푼다.
+        -n : 패스워드 변경까지의 최소 날짜를 설정한다. 패스워드 변경 후 최소로 사용해야 되는 날짜수
+        -x : 현재 패스워드의 유효기간을 지정한다.
+        -w : 패스워드 만료 전 경고 날짜를 지정한다.
+        -i : 패스워드 만료된 뒤 사용자 계정 사용이 실제 로그인이 불가능하게 되기까지 유예기간을 설정
+        -e : 다음 로그인 시에 반드시 패스워드를 변경하도록 할 때 사용한다.
+    ```
     + -S옵션의 7개 필드
+    ```
         1. 유저 로그인명
         2. L(비밀번호 잠김), NP(비밀번호 없음), P(사용가능한 비밀번호)
         3. 가장 최근에 변경된 일자
@@ -103,16 +106,19 @@
         5. 비밀번호 변경까지 최대 일자
         6. 비밀번호 만료를 알리는 경고 기간
         7. 비밀번호가 만료되고 비밀번호가 잠기기까지의 유예기간
+    ```
 
 + chage \[optioin\] \[계정\] : 비밀번호 관련 저장 파일(/etc/shadow)의 날짜 관련 필드 설정을 모두 할 수 있는 명령어
     + 옵션
-        + -l : 사용자의 비밀번호에 대한 정보를 보여준다.
-        + -d : 최근 비밀번호를 바꾼 날을 수정한다.
-        + -m : 비밀번호 변경의 최소 날짜를 지정한다.
-        + -M : 비밀번호 변경 없이 사용 가능한 최대 날짜를 지정한다.
-        + -I : 비밀번호 만료 후 잠금까지 유예기간을 지정한다.
-        + -E : 계정이 만기되는 날을 지정한다.
-        + -W : 비밀번호 만료 전 변경을 요구하는 경고 날짜를 지정한다.
+    ```
+        -l : 사용자의 비밀번호에 대한 정보를 보여준다.
+        -d : 최근 비밀번호를 바꾼 날을 수정한다.
+        -m : 비밀번호 변경의 최소 날짜를 지정한다.
+        -M : 비밀번호 변경 없이 사용 가능한 최대 날짜를 지정한다.
+        -I : 비밀번호 만료 후 잠금까지 유예기간을 지정한다.
+        -E : 계정이 만기되는 날을 지정한다.
+        -W : 비밀번호 만료 전 변경을 요구하는 경고 날짜를 지정한다.
+    ```
 
 + 전체 정책 변경
     + 날짜관련 전체 설정
@@ -153,9 +159,73 @@
 ## 새로운 유저 추가
 ```mkdir /home/newuser```
 + 새로운 유저의 홈디렉터리 생성
-```adduser -d /home/newuser newuser```
+```useradd -d /home/newuser newuser```
 + 홈디렉터리를 지정한 새로운 계정 생성
 ```passwd newuser```
 + 새계정의 비밀번호 지정
 ```vim /etc/default/useradd```
 + 새계정의 기본셀을 bash셀로 지정
+
+## hostname
+```hostname```
++ 명령으로 host확인
+```hostnamectl set-hostname [newname]```
++ 명령으로 hostname 변경
+
+
+## cron
++ 특정한 시간 또는 특정 시간 마다 작업을 자동으로 수행하고 싶을 때 사용하는 명령어
++ crontab - cron작업을 설정하는 파일을 crontab파일이라고 한다. (/etc/crontab 파일에 설정된 내용을 읽어서 수행)
+    + crontab의 7개 필드
+    ```
+    분 : 0~59로 설정
+    시 : 0~23으로 설정
+    일 : 1~31로 설정
+    월 : 1~12로 설정
+    요일 : 0~7또는 sun, mon등 글자로 설정 (0과 7일 일요일)
+    사용자 : 사용자이름
+    명령 : 실행할 명령어
+    ```
++ /usr/sbin/anacron : cron과 함께 동작하는 프로그램으로 서버가 중지되었을 때도 작업을 실행하도록 보장한다.
++ /var/log/cron : cron실행내용이 기록되는 로그파일
+```crontab [option] 명령어```
+
+## uname
++ 시스템에 대한 정보를 출력한다.
++ 옵션
+    ```
+    -a : -p 와 -i 옵션을 제외하고 모든 정보를 출력
+    -s : 커널의 이름을 출력한다.
+    -n : 네트워크의 호스트 이름을 출력한다.
+    -r : 커널의 릴리즈 정보를 출력한다.
+    -v : 커널의 버전을 출력한다.
+    -m : 시스템의 하드웨어 타입을 출력한다.(아키텍쳐)
+    -p : 프로세서의 종류를 출력한다.
+    -o : 운영체제의 이름을 출력한다.
+    ```
++ `uname -snrvmo`
+
+```
+#!/bin/bash
+
+RAM_TOTAL=$(free -m | grep Mem | awk '{ print $2 }')
+RAM_USED=$(free -m | grep Mem | awk '{ print $3 }')
+RAM_PERSENTAGE=$(free -m | grep Mem | awk '{ printf "%.2f\n", $3/$2 * 100}')
+DISK_TOTAL=$(df -h | grep /dev/mapper/jaewchoi42--vg-root | awk '{ print $2}' | tr -d "A-Z,a-z")
+DISK_USED=$(df -m | grep /dev/mapper/jaewchoi42--vg-root | awk '{ print $3}')
+DISK_PERSENTAGE=$(df -m | grep /dev/mapper/jaewchoi42--vg-root | awk '{ print $5}')
+echo -e "\t#Architecture: $(uname -snrvmo)"
+echo -e "\t#CPU physical : $(lscpu | grep Core\(s\) | awk '{ print $4 }')"
+echo -e "\t#vCPU : $(grep processor /proc/cpuinfo | wc -l)"
+echo -e "\t#Memory Usage: ${RAM_USED}/${RAM_TOTAL}MB (${RAM_PERSENTAGE}%)"
+echo -e "\t#Disk Usage: ${DISK_USED}/${DISK_TOTAL}Gb (${DISK_PERSENTAGE})"
+echo -e "\t#CPU load: $(top -b -n 1 | grep Cpu | tr -d "nid," | awk '{print 100.0-$7}')%"
+echo -e "\t#Last boot: $(who -b | awk '{print $3}') $(who -b | awk '{print $4}')"
+if [ $(lsblk | grep lvm | wc -l) -ne 0 ];then
+	echo -e "\t#LVM use: yes"
+else
+	echo -e "\t#LVM use: no"
+fi
+echo -e "\t#Connexions TCP : $(ss -t | grep ESTAB | wc -l) ESTABLISHED"
+echo -e "\t#User log: $(grep /bin/bash /etc/passwd | wc -l | awk '{ print $1-1 }')"
+```

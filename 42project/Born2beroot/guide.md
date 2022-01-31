@@ -188,22 +188,97 @@
     ```
 + /usr/sbin/anacron : cron과 함께 동작하는 프로그램으로 서버가 중지되었을 때도 작업을 실행하도록 보장한다.
 + /var/log/cron : cron실행내용이 기록되는 로그파일
-```crontab [option] 명령어```
+```crontab -e```
++ crontab을 수정할 editor가 열린다.
+```*/10 * * * * bash /root/monitoring.sh | wall```
++ wall명령을 통해 전체 사용자에게 monitoring.sh의 실행내용을 메세지로 전송한다.(Broadcast message)
+```service cron start```
++ cron실행
 
-## uname
-+ 시스템에 대한 정보를 출력한다.
-+ 옵션
+## OS의 architecture 및 kernel version
++ `uname` : 시스템에 대한 정보를 출력한다.
+    + 옵션
+        ```
+        -a : -p 와 -i 옵션을 제외하고 모든 정보를 출력
+        -s : 커널의 이름을 출력한다.
+        -n : 네트워크의 호스트 이름을 출력한다.
+        -r : 커널의 릴리즈 정보를 출력한다.
+        -v : 커널의 버전을 출력한다.
+        -m : 시스템의 하드웨어 타입을 출력한다.(아키텍쳐)
+        -p : 프로세서의 종류를 출력한다.
+        -o : 운영체제의 이름을 출력한다.
+        ```
+    + `uname -snrvmo`
+
+## physical/virtual processors의 개수
++ physical processors : cpu의 코어
++ virtual processors : cpu의 쓰래드
++ `lscpu` : cpu의 정보를 표시
+    + `lscpu | grep Core\(s\) | awk '{ print $4 }'`
++ `/proc/cpuinfo` : cpu의 정보를 저장한 파일
     ```
-    -a : -p 와 -i 옵션을 제외하고 모든 정보를 출력
-    -s : 커널의 이름을 출력한다.
-    -n : 네트워크의 호스트 이름을 출력한다.
-    -r : 커널의 릴리즈 정보를 출력한다.
-    -v : 커널의 버전을 출력한다.
-    -m : 시스템의 하드웨어 타입을 출력한다.(아키텍쳐)
-    -p : 프로세서의 종류를 출력한다.
-    -o : 운영체제의 이름을 출력한다.
+    processor   :   0
+    ...
+    physical id :   0
+    ...
+    processor   :   1
+    ...
+    physical id :   0
+    ...
     ```
-+ `uname -snrvmo`
+    + 위는 1개의 코어에 2개의 쓰래드가 있는 경우 cpuinfo의 내용이다. 2개의 processor이지만 physical id는 동일하다. -> 1개의 physical processors(코어)에 2개의 virtual processors(쓰래드)
+    + `grep processor /proc/cpuinfo | wc -l)`
+
+## 서버에서 사용 가능한 RAM/디스크 및 사용률
++ `free` : 메모리의 현황을 출력
+    + total : `free -m | grep Mem | awk '{ print $2 }'`
+    + used : `free -m | grep Mem | awk '{ print $3 }'`
+    + persentage : `free -m | grep Mem | awk '{ printf "%.2f\n", $3/$2 * 100}'`
++ `df` : 디스크의 현황을 출력
+    + total : `df -ht ext4 --total | grep total | awk '{ print $2 }' | tr -d "A-Z"`
+    + used : `df -ht ext4 --total | grep total | awk '{ print $3 }'`
+    + persentage : `df -ht ext4 --total | grep total | awk '{ print $5 }'`
+
+## CPU사용률
++ `top` : 현재 서버의 상태를 출력
+    + `top -b -n 1 | grep Cpu | tr -d "nid," | awk '{print 100.0-$7}'`
+
+## 마지막 재부팅 날짜 및 시간
++ `who` : 로그인한 사용자에대한 정보
+    + `who -b` : 마지막 재부팅 날짜 및 시간
+    + `who -b | awk '{print $3}'`
+    + `who -b | awk '{print $4}'`
+
+## LVM 활성화 여부
++ lsblk에서 lvm활성화 확인
+    ```
+    if [ $(lsblk | grep lvm | wc -l) -ne 0 ];then
+        echo -e "\t#LVM use: yes"
+    else
+        echo -e "\t#LVM use: no"
+    fi
+    ```
+
+## 작동중인 연결 개수
++ ss : 소켓의 상태를 출력
+    + tcp : TCP this means  established  connections 설정된 연결
+    + `ss -t | grep ESTAB | wc -l`
+
+## 서버를 사용하고 있는 이용자 수
++ /etc/passwd 파일에서 /bin/bash로 설정된 사용자에서 root는 제외
+    + `grep /bin/bash /etc/passwd | wc -l | awk '{ print $1-1 }'`
+
+## 서버의 IPv4와 MAC주소
++ ip 주소 : 네트워크 주소, IPv4는 3자리 숫자(0~255) 4개의 조합으로 구성된 주소
+    + `hostname -I`
++ MAC 주소 : 하트웨어 주소, 컴퓨터의 고유한 주소
+    + `ip addr | grep ether | awk '{print $2}'`
++ lo : 로컬호스트, 루프백, 자기 자신한테 정보를 재전달 할 때 사용하는 IP주소 127.0.0.1
++ ip addr : 모든 네트워크에 할당된 주소를 표시한다.
+
+## sudo 프로그램으로 실행된 명령의 수
++ journalctl : systemd의 로그를 확인한다. systemd-journald.service에 의해 systemd의 정보를 분석한다.
+    + `journalctl _COMM=sudo | grep COMMAND | wc -l`
 
 ```
 #!/bin/bash
@@ -211,9 +286,9 @@
 RAM_TOTAL=$(free -m | grep Mem | awk '{ print $2 }')
 RAM_USED=$(free -m | grep Mem | awk '{ print $3 }')
 RAM_PERSENTAGE=$(free -m | grep Mem | awk '{ printf "%.2f\n", $3/$2 * 100}')
-DISK_TOTAL=$(df -h | grep /dev/mapper/jaewchoi42--vg-root | awk '{ print $2}' | tr -d "A-Z,a-z")
-DISK_USED=$(df -m | grep /dev/mapper/jaewchoi42--vg-root | awk '{ print $3}')
-DISK_PERSENTAGE=$(df -m | grep /dev/mapper/jaewchoi42--vg-root | awk '{ print $5}')
+DISK_TOTAL=$(df -ht ext4 --total | grep total | awk '{ print $2 }' | tr -d "A-Z")
+DISK_USED=$(df -ht ext4 --total | grep total | awk '{ print $3 }')
+DISK_PERSENTAGE=$(df -ht ext4 --total | grep total | awk '{ print $5 }')
 echo -e "\t#Architecture: $(uname -snrvmo)"
 echo -e "\t#CPU physical : $(lscpu | grep Core\(s\) | awk '{ print $4 }')"
 echo -e "\t#vCPU : $(grep processor /proc/cpuinfo | wc -l)"
@@ -228,5 +303,6 @@ else
 fi
 echo -e "\t#Connexions TCP : $(ss -t | grep ESTAB | wc -l) ESTABLISHED"
 echo -e "\t#User log: $(grep /bin/bash /etc/passwd | wc -l | awk '{ print $1-1 }')"
+echo -e "\t#Network: IP $(hostname -I) ($(ip addr | grep ether | awk '{print $2}'))"
+echo -e "\t#Sudo : $(journalctl _COMM=sudo | grep COMMAND | wc -l) cmd"
 ```
-

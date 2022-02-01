@@ -10,21 +10,21 @@
     + 일반적인 편집기(nano, vi)를 통해 sudo를 편집하면 문제가 발생할 수 있음 따라서 파일에서도 visudo를 통해 편집할 것을 권장한다.
     + visudo를 통해 편집을 하면 잘못된 편집에 대해 지적을 해준다.
 + sudoers파일 편집
-    ```Defaults	authfail_message="custom message"```
+    ```Defaults	authfail_message="custom message"```   
     + sudo접근 실패 시 출력하는 메시지
-    ```Defaults	badpass_message="Wrong password custom"```
+    ```Defaults	badpass_message="Wrong password custom"```   
     + 잘못된 비밀번호 입력 시 출력하는 메시지
-    ```Defaults	log_input```
+    ```Defaults	log_input```   
     + 입력 로그를 기록함
-    ```Defaults	log_output```
+    ```Defaults	log_output```   
     + 출력 로그를 기록함
-    ```Defaults	requiretty```
+    ```Defaults	requiretty```   
     + 현재 셀이 tty일 때만 sudo를 실행할 수 있도록 한다.
-    ```Defaults	iolog_dir="/var/log/sudo/"```
+    ```Defaults	iolog_dir="/var/log/sudo/"```   
     + sudo 로그를 저장할 디렉터리의 경로를 설정한다.
-    ```Defaults	passwd_tries=3```
+    ```Defaults	passwd_tries=3```    
     + 암호 입력 횟수를 지정(기본도 3회)
-    ```Defaults    secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"```
+    ```Defaults    secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"```    
     + sudo명령을 실행할 때 사용하는 가상 셀의 PATH를 제한한다.
    
 ## 그룹 설정

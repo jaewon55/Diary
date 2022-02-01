@@ -10,7 +10,7 @@
     + 일반적인 편집기(nano, vi)를 통해 sudo를 편집하면 문제가 발생할 수 있음 따라서 파일에서도 visudo를 통해 편집할 것을 권장한다.
     + visudo를 통해 편집을 하면 잘못된 편집에 대해 지적을 해준다.
 + sudoers파일 편집   
-    ```Defaults	authfail_message="custom message"```   
+        ```Defaults authfail_message="custom message"```   
     + sudo접근 실패 시 출력하는 메시지   
     ```Defaults	badpass_message="Wrong password custom"```   
     + 잘못된 비밀번호 입력 시 출력하는 메시지   
@@ -154,7 +154,7 @@
             reject_username : 암호가 계정의 이름을 포함하는지 검사
             enforce_for_root : root계정에도 상기의 옵션을 적용
         ```
-        ```minlen=10 difok=7 dcredit=-1 lcredit=-1 ucredit=-1 maxrepeat=3 reject_username enforce_for_root```
+        ```minlen=10 difok=7 dcredit=-1 ucredit=-1 maxrepeat=3 reject_username enforce_for_root```
 
 ## 새로운 유저 추가
 ```mkdir /home/newuser```
@@ -279,6 +279,8 @@
 ## sudo 프로그램으로 실행된 명령의 수
 + journalctl : systemd의 로그를 확인한다. systemd-journald.service에 의해 systemd의 정보를 분석한다.
     + `journalctl _COMM=sudo | grep COMMAND | wc -l`
+
+## lighttpd
 
 ```
 #!/bin/bash

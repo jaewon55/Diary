@@ -1,6 +1,4 @@
 # Sudo설치 및 설정</br>
-<span style="font-size:300%">
-
 ## sudo명령은 root권한을 빌려 사용하기 때문에 보안관리를 철저하게 해야한다.</br>
 ## /etc/sudoers파일에서 설정 및 관리한다.</br>
 ```
@@ -23,7 +21,6 @@ Defaults	passwd_tries=3
 Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
 ```
 + sudoers파일 편집
-    <span style="font-size:300%">
     + `Defaults    authfail_message="custom message"` </br>sudo접근 실패 시 출력하는 메시지
     + `Defaults    authfail_message="custom message"`
         + 잘못된 비밀번호 입력 시 출력하는 메시지

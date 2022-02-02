@@ -21,7 +21,7 @@ Defaults	passwd_tries=3
 Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
 ```
 + sudoers파일 편집
-    <span style="font-size:150%">
+    <span style="font-size:300%">
     + `Defaults    authfail_message="custom message"` </br>sudo접근 실패 시 출력하는 메시지 </span>
     + `Defaults    authfail_message="custom message"`
         + 잘못된 비밀번호 입력 시 출력하는 메시지

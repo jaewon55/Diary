@@ -39,3 +39,4 @@ Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/b
     + `Defaults	iolog_dir="/var/log/sudo/"`</br>sudo 로그를 저장할 디렉터리의 경로를 설정한다.
     + `Defaults	passwd_tries=3`</br>암호 입력 횟수 지정
     + `Defaults    secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/snap/bin"`</br>sudo명령을 실행할 때 사용하는 가상셀의 PATH를 제한
+****

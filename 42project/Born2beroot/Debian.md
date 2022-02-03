@@ -25,6 +25,7 @@ apparmor_status
 #### apt
 + **apt(Advanced Packaging Tool)은 .deb 형식의 패키지들을 설치, 삭제, 업데이트 등 관리하는 도구**
 + **apt-get과 apt-cache(검색)의 주요 기능을 결합했다.**
+
 #### aptitude
 + **apt와 같은 기능을 가지고 있는 도구로 debian을 위해 개발되었다. apt에서는 사용자가 직접 처리해야하는 작업을 자동화 해준다.**
 + **aptitude는 curses인터페이스를 제공한다.**

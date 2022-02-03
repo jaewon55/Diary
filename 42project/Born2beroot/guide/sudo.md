@@ -6,6 +6,7 @@
 + 보안상의 이유로 TTY모드를 활성화해야 한다.
 + 보안상의 이유로 sudo가 사용할 수 있는 경로는 제한되어야 한다.
     + ex)/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
+****
 ### Sudo설치
 ```
 apt install sudo

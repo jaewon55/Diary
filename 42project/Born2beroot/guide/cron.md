@@ -1,5 +1,5 @@
 # Cron
-### subject
+## subject
 + monitoring.sh라는 간단한 스크립트를 bash에서 만들어야 한다. 서버 시작 시 스크립트는 10분마다 모든 터미널에 대한 아래 정보들을 표시한다.
     + OS의 architecture 및 kernel version
     + 물리적 프로세서 개수
@@ -15,7 +15,7 @@
     + sudo 프로그램으로 실행된 명령의 수
     + defense시 스크립트의 내용이 어떻게 작동하는지 설명할 수 있어야 한다. 또한 수정하지 않고 일시정지 할 수 있어야 한다.
 ****
-### Cron
+## Cron
 #### Cron?
 + 특정한 시간 또는 특정 시간 마다 작업을 자동으로 수행하고 싶을 때 사용하는 명령어
 + crontab - cron작업을 설정하는 파일을 crontab파일이라고 한다. (/etc/crontab 파일에 설정된 내용을 읽어서 수행)
@@ -44,7 +44,7 @@ service cron start
 ```
 + **cron실행**
 ****
-### monitoring.sh작성
+## monitoring.sh작성
 #### OS의 architecture 및 kernel version
 + **`uname` : 시스템에 대한 정보를 출력한다.**
 + **`uname`옵션**

@@ -2,12 +2,12 @@
 ## subject
 + lighttpd, MariaDB, PHP와 함께 작동하는 WordPress 웹 사이트를 설정한다.
 ## Web Server
-#### Web Server?
+### Web Server?
 + **web server는 소프트웨어와 하트웨어로 구분된다.**
     + 하드웨어 : Web서버가 설치되어 있는 컴퓨터
     + 소프트웨어 : 웹 브라우저 클라이언트로부터 HTTP요청을 받아 정적인 컨텐츠(.html/.jpg)를 제공하는 컴퓨터 프로그램
 
-#### CGI
+### CGI
 + **web server는 동적인 컨텐츠를 바로 제공할 수 없기 때문에 외부 프로그램(php,python)으로 부터 도움을 받는데 이 때 web server와 외부 프로그램과의 연계법이 CGI이다.**
 ****
 ## lighttpd
@@ -19,13 +19,13 @@
 + **웹사이트/홈페이지/블로그 등을 제작할 수 있는 CMS(Content Management System)으로 오픝소스 프로그램으로 누구나 개발 및 수정에 참여 가능하다.**
 ****
 ## web server설정
-#### 포트 허용 및 포트 포워딩
+### 포트 허용 및 포트 포워딩
 ```
 ufw allow 80
 ```
 + **lighttpd와 통신하기 위해 80번 포트를 열고 포트 포워딩 룰을 추가한다.**
 
-#### lighttpd 와 php-fpm 설치 및 설정
+### lighttpd 와 php-fpm 설치 및 설정
 ```
 apt install lighttpd
 apt install php7.4-fpm
@@ -55,7 +55,7 @@ fastcgi.server = ( ".php" => ((
 + **`vim /var/www/html/info.php` php파일 작성**
 + **\[로컬ip\]:\[로컬포트\]/info.php 로 접속해 연결 확인**
 
-#### mariadb 설치 및 데이터베이스 생성
+### mariadb 설치 및 데이터베이스 생성
 ```
 apt install mariadb-server
 apt install php7.4-mysql

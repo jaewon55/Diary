@@ -185,4 +185,4 @@ ufw allow 90
 ```
 + **ufw로 90번 포트를 허용하고 포트 포워딩으로 연결**
 + **`\[로컬ip\]:\[로컬포트\]/info.php`로 접속해 php-fpm연결 확인**
-+ **이후 lighttpd와 처럼 WordPress연결**
++ **이후 lighttpd처럼 WordPress연결**

@@ -78,7 +78,64 @@ EXIT;
 // 나가기
 ```
 + **데이터 베이스 생성과 계정 생성**
+
+### WordPress설치 및 데이터베이스 지정
 ```
 wget -O /tmp/wordpress.tar.gz "http://wordpress.org/latest.tar.gz"
 ```
 + **웹에서 검색하는 wget명령어로 wordpress압축파일 설치**
+```
+tar -xzf /tmp/wordpress.tar.gz -C /var/www/html
+```
++ **설치한 압축파일을 lighttpd서버가 데이터를 읽는 디렉터리에 푼다.**
++ **\[로컬ip\]:\[로컬포트\]/wordpress 로 접속해 연결 확인**
+```
+// ** Database settings - You can get this info from your web host ** //
+/** The name of the database for WordPress */
+define( 'DB_NAME', 'wordpassdb' );
+
+/** Database username */
+define( 'DB_USER', 'jaewchoi' );
+
+/** Database password */
+define( 'DB_PASSWORD', '123' );
+
+/** Database hostname */
+define( 'DB_HOST', 'localhost' );
+
+/** Database charset to use in creating database tables. */
+define( 'DB_CHARSET', 'utf8' );
+
+/** The database collate type. Don't change this if in doubt. */
+define( 'DB_COLLATE', '' );
+```
++ **`vim /var/www/html/wordpress/wp-config-sample.php` Wordpress설정파일을 열어 데이터베이스 설정**
+```
+/**#@+
+ * Authentication unique keys and salts.
+ *
+ * Change these to different unique phrases! You can generate these using
+ * the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}.
+ *
+ * You can change these at any point in time to invalidate all existing cookies.
+ * This will force all users to have to log in again.
+ *
+ * @since 2.6.0
+ */
+define( 'AUTH_KEY',         'put your unique phrase here' );
+define( 'SECURE_AUTH_KEY',  'put your unique phrase here' );
+define( 'LOGGED_IN_KEY',    'put your unique phrase here' );
+define( 'NONCE_KEY',        'put your unique phrase here' );
+define( 'AUTH_SALT',        'put your unique phrase here' );
+define( 'SECURE_AUTH_SALT', 'put your unique phrase here' );
+define( 'LOGGED_IN_SALT',   'put your unique phrase here' );
+define( 'NONCE_SALT',       'put your unique phrase here' );
+```
++ **[secret-key](https://api.wordpress.org/secret-key/1.1/salt/) <-사이트에 접속해서 secret-key수정**
+	+ secret-key는 접속할 때마다 변경된다.
+```
+mv /var/www/html/wordpress/wp-config-sample.php /var/www/html/wordpress/wp-config.php
+```
++ **`wp-config-sample.php`파일을 `wp-config.php`로 파일명을 바꾼다.**
++ **\[로컬ip\]:\[로컬포트\]/wordpress 로 접속해 연결 확인**
+****

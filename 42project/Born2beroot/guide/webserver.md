@@ -139,3 +139,50 @@ mv /var/www/html/wordpress/wp-config-sample.php /var/www/html/wordpress/wp-confi
 + **`wp-config-sample.php`파일을 `wp-config.php`로 파일명을 바꾼다.**
 + **\[로컬ip\]:\[로컬포트\]/wordpress 로 접속해 연결 확인**
 ****
+
+## caddy로 WordPress구성하기
+
+### caddy설치
++ **[공식사이트](https://caddyserver.com/docs/install#debian-ubuntu-raspbian)**
+```
+apt install curl
+```
++ **설치에 필요한 curl명령어를 설치**
+	+ curl : http 메시지를 쉘상에서 요청하여 결과를 확인하는 명령어, http를 이용하여 경로의 데이터를 가져온다.
+```
+sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https
+curl -1sLf 'https://dl.cloudsmith.io/public/caddy/testing/gpg.key' | sudo tee /etc/apt/trusted.gpg.d/caddy-testing.asc
+curl -1sLf 'https://dl.cloudsmith.io/public/caddy/testing/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/caddy-testing.list
+sudo apt update
+sudo apt install caddy
+```
++ **caddy(testing releases)설치**
+```
+:90 {
+	# Set this path to your site's directory.
+	root * /usr/share/caddy
+
+	# Enable the static file server.
+	file_server
+
+	# Another common task is to set up a reverse proxy:
+	# reverse_proxy localhost:8080
+
+	# Or serve a PHP site through php-fpm:
+	# php_fastcgi localhost:9000
+	php_fastcgi unix//run/php/php7.4-fpm.sock
+	file_server
+}
+```
++ **`vim /etc/caddy/Caddyfile` caddy 설정파일 수정**
+```
+#!php
+<?php phpinfo(); ?>
+```
++ **`vim /usr/share/caddy/info.php` info.php파일 생성**
+```
+ufw allow 90
+```
++ **ufw로 90번 포트를 허용하고 포트 포워딩으로 연결**
++ **`\[로컬ip\]:\[로컬포트\]/info.php`로 접속해 php-fpm연결 확인**
++ **이후 lighttpd와 처럼 WordPress연결**

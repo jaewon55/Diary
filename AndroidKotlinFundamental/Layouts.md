@@ -33,24 +33,23 @@
 + **chain은 수직 또는 수평으로 서로 연결된 view들의 그룹이다. chain의 첫 번째 view가 해당 chain의 head로 chain의 위치와 배치를 제어한다.**
 + **style : chain은 정렬되는 방식에 따라 스타일이 나뉜다.**
 ### chain의 종류
-</br>
 <img src="https://developer.android.com/codelabs/kotlin-android-training-constraint-layout/img/d57e8cdbe225181f.png">
 
-+ spread : 기본 스타일으로 모든 view가 같은 여백을 가진다.</br>
-</br>
++ **spread : 기본 스타일으로 모든 view가 같은 여백을 가진다.**</br>
+
 <img src="https://developer.android.com/codelabs/kotlin-android-training-constraint-layout/img/8ee14c6b5164afef.png">
 
-+ spread inside : 양 끝의 view들이 부모 view와 붙어 있고 나머지 view가 같은 여백을 가진다.</br>
-</br>
++ **spread inside : 양 끝의 view들이 부모 view와 붙어 있고 나머지 view가 같은 여백을 가진다.**</br>
+
 <img src="https://developer.android.com/codelabs/kotlin-android-training-constraint-layout/img/16bb057b065865c6.png">
 </br>
 <img src="https://developer.android.com/codelabs/kotlin-android-training-constraint-layout/img/c893437f3a9c3f06.png">
 
-+ packed : view들이 뭉쳐있고 margin을 계산한 후 haed view의 위치에 따라 chain의 위치를 조정할 수 있다.</br>
-</br>
++ **packed : view들이 뭉쳐있고 margin을 계산한 후 haed view의 위치에 따라 chain의 위치를 조정할 수 있다.**</br>
+
 <img src="https://developer.android.com/codelabs/kotlin-android-training-constraint-layout/img/91ca5b204a0141ed.png">
 
-+ weighted : view가 layout_constraint(Horizontal/Vertical)_weight 속성에 설성된 값에 따라 모두 채운다.</br>
++ **weighted : view가 layout_constraint(Horizontal/Vertical)_weight 속성에 설성된 값에 따라 모두 채운다.**</br>
 
 ## Data binding
 + **binding객체를 통해 view와 데이터에 접근할 수 있다.**
@@ -64,9 +63,8 @@ buildFeatures {
 	dataBinding true
 }
 ```
-+ `build.gradle(Module:app)`에 위의 코드를 추가 후 동기화한다.
-`<layout>`태그를 xml의 root view로 사용<br/>
-</br>
++ **`build.gradle(Module:app)`에 위의 코드를 추가 후 동기화한다.**
++ **layout file에 `<layout>`태그를 추가해 XML의 root view로 사용**<br/>
 
 ```kotlin
 lateinit var binding: ActivityMainBinding
@@ -75,7 +73,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 	binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 }
 ```
-+ binding변수를 선언하고 `setcontentview()`를 `binding = DataBindingUtil.setContentView(this, R.layout.activity_main)`으로 변경한다.<br/>
++ **binding변수를 선언하고 `setcontentview()`를 `binding = DataBindingUtil.setContentView(this, R.layout.activity_main)`으로 변경한다.**
 
 ### view에서 data를 사용
 ```xml
@@ -85,12 +83,12 @@ override fun onCreate(savedInstanceState: Bundle?) {
 		type="com.example.android.aboutme.MyName" />
 </data>
 ```
-+ `<layout>`태그 안에 `<data>`태그를 추가하고 `<variable>`의 name과 type(data class의 경로)을 지정한다.<br/>
++ **`<layout>`태그 안에 `<data>`태그를 추가하고 `<variable>`의 name과 type(data class의 경로)을 지정한다.**
 
 ```xml
 android:text="@={myName.name}"
 ```
-+ `"@={}"`표기법을 통해 데이터를 지정할 수 있다.<br/>
++ **`"@={}"`표기법을 통해 데이터를 지정할 수 있다.**
 
 ```kotlin
 binding.apply {
@@ -98,4 +96,4 @@ binding.apply {
 	invalidateAll()
 }
 ```
-+ 사용자와 상호작용 중 data class의 data가 변경되어 이를 적용하고자 할 때는 `invalidateAll()`(binding expression)을 사용해 이전의 데이터를 무효화하고 새로운 데이터를 적용한다.<br/>
++ **사용자와 상호작용 중 data class의 data가 변경되어 이를 적용하고자 할 때는 `invalidateAll()`(binding expression)을 사용해 이전의 데이터를 무효화하고 새로운 데이터를 적용한다.**

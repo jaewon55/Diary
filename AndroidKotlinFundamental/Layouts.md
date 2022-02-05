@@ -97,3 +97,4 @@ binding.apply {
 }
 ```
 + **사용자와 상호작용 중 data class의 data가 변경되어 이를 적용하고자 할 때는 `invalidateAll()`(binding expression)을 사용해 이전의 데이터를 무효화하고 새로운 데이터를 적용한다.**
+

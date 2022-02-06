@@ -53,7 +53,10 @@ fastcgi.server = ( ".php" => ((
 <?php phpinfo(); ?>
 ```
 + **`vim /var/www/html/info.php` php파일 작성**
-+ **\[로컬ip\]:\[로컬포트\]/info.php 로 접속해 연결 확인**
+```
+systemctl restart lighttpd
+```
++ **lighttpd 재시작 후 `\[로컬ip\]:\[로컬포트\]/info.php` 로 접속해 연결 확인**
 
 ### mariadb 설치 및 데이터베이스 생성
 ```
@@ -88,7 +91,7 @@ wget -O /tmp/wordpress.tar.gz "http://wordpress.org/latest.tar.gz"
 tar -xzf /tmp/wordpress.tar.gz -C /var/www/html
 ```
 + **설치한 압축파일을 lighttpd서버가 데이터를 읽는 디렉터리에 푼다.**
-+ **\[로컬ip\]:\[로컬포트\]/wordpress 로 접속해 연결 확인**
++ **`\[로컬ip\]:\[로컬포트\]/wordpress` 로 접속해 연결 확인**
 ```
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
@@ -184,5 +187,8 @@ sudo apt install caddy
 ufw allow 90
 ```
 + **ufw로 90번 포트를 허용하고 포트 포워딩으로 연결**
-+ **`\[로컬ip\]:\[로컬포트\]/info.php`로 접속해 php-fpm연결 확인**
+```
+systemctl restart caddy
+```
++ **caddy 재시작 후 `\[로컬ip\]:\[로컬포트\]/info.php`로 접속해 php-fpm연결 확인**
 + **이후 lighttpd처럼 WordPress연결**

@@ -42,3 +42,65 @@ val binding = DataBindingUtil.inflate<FragmentTitleBinding>(inflater,
 ```
 + **Activity의 xml file에 fragment 태그를 통해 fragment를 사용할 수 있다.**
 + **`android:name="fragment경로"`를 통해 fragment를 지정한다.**
+
+## Navigation
+### Navigation?
++ **Navigation은 앱의 화면이 전환될 때 화면과 화면 사이의 탐색, 전환 애니매이션, 딥링크, 컴파일시 확인되는 인자를 관리하는 라이브러리이다.**
+
+### Navigation 사용을 위한 Gradle설정 및 resource file생성
+```gradle
+ext {
+        ...
+        navigationVersion = "2.3.0"
+        ...
+    }
+```
++ **project-level의 gradle파일의 ext{}부분에 navigationVersion추가**
+```
+dependencies {
+  ...
+  implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+  implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+  ...
+}
+```
++ **module-level의 gradle파일의 dependencies에 navigation-fragment-ktx 와 navigation-ui-ktx를 추가**
+
+### Navigation 리소스파일 생성
+<img src="https://developer.android.com/codelabs/kotlin-android-training-add-navigation/img/20dce46c90407e47.png">
+
++ **파일 이름을 지정하고 Resource type은 Navigation으로 지정**
+
+### Navigation Host fragment
++ **navigation host fragment는 navigation에서 host역할을 한다. 보통 NavHostFragment이라는 이름을 가진다.**
++ **host는 user가 정의된 navigation으로 화면을 전환할 때 fragment를 필요에 따라 바꾸고 fragment back stack을 생성하고 관리한다.**
+```xml
+<fragment
+                android:id="@+id/myNavHostFragment"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:navGraph="@navigation/navigation"
+                app:defaultNavHost="true" />
+```
++ **정의한 navGraph를 지정 `app:navGraph="@navigation/navigation"`**
++ **fragment태그에 name을 `android:name="androidx.navigation.fragment.NavHostFragment"`지정해서 NavHostFragment로 지정할 수 있다.**
++ **`app:defaultNavHost="true"`를 추가하면 이 fragment host가 기본 host가 되고 system Back button(휴대전화의 뒤로가기 버튼)을 intercept해서 앱에서 동작을 정의할 수 있다.**
+
+## Navigation graph그리기
+### fragment추가
++ **navigation xml파일의 Design탭에서 `New Destination`버튼으로 fragment를 추가할 수 있다.**
++ **fragment의 미리보기가 보여지지 않는다면 Code탭에서 해당 fragment에 `tools:layout="\[해당 fragment\]"`를 추가해서 미리보기를 디자인시점에 확인할 수 있다.**
+
+### fragment연결
++ **두 fragment를 연결하면 사용자가 어떠한 동작을 했을 때 연결된 fragment로 화면전환이 전환된다.**
++ **Design탭에서 connection point를 눌러 연결하고자 하는 fragment로 드래그해서 간편하게 연결이 가능하다.**
++ **생성된 화살표를 클릭해서 나오는 Attributes에서 해당 전환의 id와 화면전환시의 동작들을 정의할 수 있다.**
+
+### .kt파일에서 화면전환 정의
+```kotlin
+binding.playButton.setOnClickListener { view : View ->
+       view.findNavController().navigate(R.id.action_titleFragment_to_gameFragment)
+}
+```
++ **코틀린 fragment파일에서 위처럼 정의하면 playButton을 눌리면 navigation에 지정된 해당 id의 동작이 실행된다.**

@@ -67,8 +67,6 @@ dependencies {
 + **module-level의 gradle파일의 dependencies에 navigation-fragment-ktx 와 navigation-ui-ktx를 추가**
 
 ### Navigation 리소스파일 생성
-<img src="https://developer.android.com/codelabs/kotlin-android-training-add-navigation/img/20dce46c90407e47.png">
-
 + **파일 이름을 지정하고 Resource type은 Navigation으로 지정**
 
 ### Navigation Host fragment

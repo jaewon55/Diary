@@ -88,7 +88,7 @@ dependencies {
 ## Navigation graph그리기
 ### fragment추가
 + **navigation xml파일의 Design탭에서 `New Destination`버튼으로 fragment를 추가할 수 있다.**
-+ **fragment의 미리보기가 보여지지 않는다면 Code탭에서 해당 fragment에 `tools:layout="\[해당 fragment\]"`를 추가해서 미리보기를 디자인시점에 확인할 수 있다.**
++ **fragment의 미리보기가 보여지지 않는다면 Code탭에서 해당 fragment에 `tools:layout="[해당 fragment]"`를 추가해서 미리보기를 디자인시점에 확인할 수 있다.**
 
 ### fragment연결
 + **두 fragment를 연결하면 사용자가 어떠한 동작을 했을 때 연결된 fragment로 화면전환이 전환된다.**

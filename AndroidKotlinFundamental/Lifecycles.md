@@ -11,6 +11,6 @@
 + **lifecycle의 상태에 따라 다른 동작을 구현하기 위해 activity와 하위 클래스(AppCompatActivity 등)는 lifecycle callback 메서드를 구현한다.**
 + **activity에서 이러한 lifecycle callback 메서드를 재정(override)의 할 수 있다.**
 
-<img src="https://developer.android.com/codelabs/kotlin-android-training-lifecycles-logging/img/8494ec955ce0c49d.png" width="400px" height="500px"></br>
+<p align="center"><img src="https://developer.android.com/codelabs/kotlin-android-training-lifecycles-logging/img/8494ec955ce0c49d.png" width="400px" height="500px"></p>
 
 + **fragment또한 activity의 lifecycle과 비슷한 lifecycle을 가진다.**

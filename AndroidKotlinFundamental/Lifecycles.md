@@ -93,7 +93,7 @@ Timber.i("onCreate called")
 	+ `finish()`메서드를 정의한 경우
 	+ 사용자가 강제종료한 경우
 	+ 장시간 화면이 나타나지 않는경우 (Android system은 스스로 activity를 종료)
-
+****
 ## Background
 + **mobile device의 처리 성능과 배터리는 제한적이기 때문에 Android runtime system은 resource를 균형적으로 사용할 필요가 있다. 따라서 background에 있는 앱들에 대해서 resource사용을 중지한다.**
 + **`onStop()`가 호출되면 앱이 화면에서 나타나지 않는다. 즉 bacground에 들어있게 된다. 하지만 `onDestroy()`가 호출되기 전까지 메모리에 resourse가 저장되어 있기 때문에 다시 foreground로 돌아올 때 `onCreate()`를 실행하지 않는다.**
@@ -111,3 +111,23 @@ Timber.i("onCreate called")
 
 + **위의 사진에서 화면에는 2개의 activity가 나타나고 있다. 하지만 focus는 공유할 앱을 선택하는 activity에 맞춰 있기 때문에 앱의 위에 보여지고 있는 activity는 사용자와 상호작용을 할 수 없는 즉 focus가 해제된 상태이다.**
 + **이 때에 앱의 위에 보여지는 activity는 `onPause()`메서드가 호출되어 focus가 해제되었지만 `onStop()`메서드는 호출되지 않았기 때문에 화면에 나타난다.**
+****
+## fragment lifecycle
+### onAttach()
++ **fragment를 소유한 activity와 연결할 때 호출된다.**
+### onCreate()
++ **activity의 `onCreate()`와 비슷하게 생성자를 초기화하기 위해서 호출된다.(layout은 제외된다.)**
+### onCreateView()
++ **fragment의 layout을 inflate한다.**
+### onViewCreated()
++ **``**
+### onStart()
++ **fragment를 화면에 나타낼 때 호출된다.**
+### onResume()
++ **fragment가 focus를 가질 때 호출된다.**
+### onPause()
++ **fragment가 focus를 잃어버릴 때 호출된다.**
+### onStop()
++ **fragment가 더 이상 화면에 나타나지 않을 때 호출된다.**
+### onDestroyView()
++ **fragment의 view가 더이사 필요하지 않을 때 호출되어 해당 view와 연결된 resource를 정리한다.**

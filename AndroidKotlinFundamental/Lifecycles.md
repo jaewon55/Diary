@@ -25,8 +25,7 @@
 + **`Logcat`콘솔에서 `I/tag`를 검색해서 `Log.i()`로 생성된 message를 검색할 수 있다.**
 
 ### onCreate()
-+ **모든 activity에서 포함해야하는 lifecycle 메서드**
-+ **activity에서 한번 초기화하는 메서드**
++ **모든 activity에서 포함해야하는 lifecycle 메서드로 activity에서 한번 초기화 된다.**
 + **activity가 메모리에서 생성된 후 한번 호출된다. 이후 activity는 실행중인 것으로 간주된다.**
 
 ### onStart()

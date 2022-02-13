@@ -106,7 +106,7 @@ Timber.i("onCreate called")
 + **activiy를 부분적으로 보이게 할 수 있기 때문에(partially visible) focus와 visiable의 차이점을 알아야 한다.**
 
 <p align="center">
-<img src="https://developer.android.com/codelabs/kotlin-android-training-lifecycles-logging/img/9ddc8b1dc79b1bff.png" width="400px" height="500px">
+<img src="https://developer.android.com/codelabs/kotlin-android-training-lifecycles-logging/img/9ddc8b1dc79b1bff.png" width="400px" height="550px">
 </p>
 
 + **위의 사진에서 화면에는 2개의 activity가 나타나고 있다. 하지만 focus는 공유할 앱을 선택하는 activity에 맞춰 있기 때문에 앱의 위에 보여지고 있는 activity는 사용자와 상호작용을 할 수 없는 즉 focus가 해제된 상태이다.**

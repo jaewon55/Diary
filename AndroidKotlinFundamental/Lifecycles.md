@@ -131,3 +131,10 @@ Timber.i("onCreate called")
 + **fragment가 더 이상 화면에 나타나지 않을 때 호출된다.**
 ### onDestroyView()
 + **fragment의 view가 더이사 필요하지 않을 때 호출되어 해당 view와 연결된 resource를 정리한다.**
+****
+## lifecycle library in android jetpack
+lifecycle library는 android jetpack의 일부분이다.
+다른 lifecycle에서 여러 작업을 수행하는 것을 구현할 때 유용하게 사용할 수 있다.
+대부분 activity와 fragment는 component에게 어떤 lifecycle에서 무었을 해야하는지
+알려주지만 lifecycle library를 사용하면 component가 lifecycle을 주시하다가 lifecycle이
+바뀌면 스스로 필요한 행동을 한다.

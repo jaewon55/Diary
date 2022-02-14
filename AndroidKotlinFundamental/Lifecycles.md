@@ -120,7 +120,7 @@ Timber.i("onCreate called")
 ### onCreateView()
 + **fragment의 layout을 inflate한다.**
 ### onViewCreated()
-+ **``**
++ **`onCreateView()`가 반환한 즉시 호출되며 view를 복원하기 이전에 호출된다.**
 ### onStart()
 + **fragment를 화면에 나타낼 때 호출된다.**
 ### onResume()
@@ -130,7 +130,7 @@ Timber.i("onCreate called")
 ### onStop()
 + **fragment가 더 이상 화면에 나타나지 않을 때 호출된다.**
 ### onDestroyView()
-+ **fragment의 view가 더이사 필요하지 않을 때 호출되어 해당 view와 연결된 resource를 정리한다.**
++ **fragment의 view가 더이상 필요하지 않을 때 호출되어 해당 view와 연결된 resource를 정리한다.**
 ****
 ## lifecycle library in android jetpack
 ### lifecycle library

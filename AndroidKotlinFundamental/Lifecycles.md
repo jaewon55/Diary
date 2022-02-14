@@ -137,7 +137,7 @@ Timber.i("onCreate called")
 + **lifecycle library는 android jetpack의 일부분으로 lifecycle의 변화로 일어나는 여러가지 복잡한 작업을 보다 쉽게 구현할 수 있게 도와준다.**
 + **대부분의 activity와 fragment는 component에게 lifecycle의 변화에 따라 어떤 작업을 수행해야 하는지 직접 알려줘야 하지만 lifecycle library를 사용하면 component가 lifecycle의 변화를 주시하고 변화에 대응하는 작업을 스스로 실행한다.**
 
-### three part 0f lifecycle library
+### three part of lifecycle library
 + **lifecycle owner : component를 가지고 있는 activity 또는 fragment를 의미한다. owner는 `LifecycleOwner` interface를 구현한다.**
 + **lifecycle class : owner의 실제 lifecycle이 바뀌면 실행할 event를 구현한다.**
 + **lifecycle observer : lifecycle상태를 관찰하고 lifecycle이 바뀌면 `LifecycleObserver`를 실행한다.**
@@ -170,3 +170,60 @@ class MainActivity : AppCompatActivity()
 ```
 + **lifecycle owner로 지정할 MainActivity는 `AppCompatActivity`를 상속받기 때문에 owner로 사용하기위한 작업은 따로할 필요 없다.**
 + **`AppCompatActivity`의 superclass인 `FragmentActivity`에서 `LifecycleOwner`를 포함하고 있기 때문에 `AppCompatActivity`를 상속받는 MainActivity는 이미 lifecycle owner로 사용할 수 있다.**
+****
+## Save and Restore Data
+### background앱의 강제종료
++ **Android는 system이 과부화 되거나 시각적으로 위험이 있을 때 앱의 전체 프로세스를 종료한다. 이 시점에 앱이 background에 있다면 사용자는 앱이 종료된 것도 모른채 앱이 조용히 종료된다.**
++ **background에서 조용히 종료된 앱에 사용자가 다시 돌아오면 앱은 재시작 하며 이전에 사용한 데이터는 `onCreate()`에 의해 재설정 된다. 이 때 데이터를 저장하지 않았다면 이전의 데이터는 앱이 종료되었을 때 메모리에서 삭제되었기 때문에 다시 복원할 수 없다.**
+
+### 데이터 저장
++ **앱이 강제로 종료될 때 데이터를 저장하기 위해서 `onSaveInstanceState()`메서드를 사용할 수 있다.**
++ **`onSaveInstanceState()`는 앱이 종료될 때 필요한 데이터를 저장하는 메서드로 `onStop()`이후에 호출된다. 즉 background에 들어가는 시점에 호출되는 것이다.**
++ **Android는 bundle에 key-value방식으로 저장한다. key는 항상 string형이고 value는 int 또는 boolean형으로 저장하는 것이 바람직 하다.**
+	+ bundle은 RAM에 저장되기 때문에 data를 작게 저장하는 것이 좋다.
+	+ 일반적으로 100k이하로 저장하는 것이 권장되고 그렇지 않으면 `TransactionTooLargeException`에러가 발생할 수 있다.
+```kotlin
+override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        Timber.i("onSaveInstanceState Called")
+        outState.putInt(KEY_REVENUE, revenue)
+        outState.putInt(KEY_DESSERT_SOLD, dessertsSold)
+        outState.putInt(KEY_TIMER_SECONDS, dessertTimer.secondsCount)
+    }
+```
++ **데이터 저장 예시**
++ **`onSaveInstanceState()`메서드에서 `outState.putInt()`메서드를 사용해 데이터를 key-value방식으로 저장한다.(string-int)**
+
+### 데이터 복원
++ **복원은 `onCreate()`에서 이루어진다.**
+```kotlin
+override fun onCreate(savedInstanceState: Bundle?)
+```
++ **`onCreate()`는 bundle을 안자로 받는다. 이 번들이 NULL이 아니라면 저장된 데이터가 있다는 의미**
++ **`onCreate()`이후에 데이터를 복원해야 한다면 `onStart()`이후에 호출되는 `onRestoreInstanceState()`메서드에서 복원을 실행할 수 있다.**
+```kotlin
+override fun onCreate(savedInstanceState: Bundle?) {
+	...
+	if (savedInstanceState != null) {
+		revenue = savedInstanceState.getInt(KEY_REVENUE, 0)
+		dessertsSold = savedInstanceState.getInt(KEY_DESSERT_SOLD, 0)
+		dessertTimer.secondsCount =
+			savedInstanceState.getInt(KEY_TIMER_SECONDS, 0)
+		showCurrentDessert()
+		}
+	...
+}
+```
++ **데이터 복원 예시**
++ **인자로 받은 bundle의 null여부를 확인**
++ **null이 아니라면 `getInt()`메서드로 int로 저장된 value를 가져온다.**
+
+## Configuration Change
++ **configuration change는 장치가 급격하게 변화하는 경우 일어난다. 이 때 system이 변화에 가장 쉽게 대응하는 방법은 activity를 강제종료하고 재시작하는 것이다.**
+	+ configuration change 예시
+		+ 장치의 언어를 변경한 경우
+		+ 외부 장치를 연결해 다른 layout을 적용해야 하는 경우
+		+ 화면이 회전하는 경우
++ **activity가 완전히 종료되기 때문에 `onDestroy()`메서드가 호출되고 app의 resourse가 메모리에서 삭제된다. 즉 저장되지 않은 data는 잃어버리게 된다.**
++ **화면이 회전할 때 마다 data가 삭제된다면 사용자는 큰 불편을 겪게 되기 때문에 이를 방지하기 위한 방법으로 `onSaveInstanceState()`메서드를 사용할 수 있다.**

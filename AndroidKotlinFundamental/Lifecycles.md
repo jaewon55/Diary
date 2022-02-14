@@ -133,8 +133,40 @@ Timber.i("onCreate called")
 + **fragment의 view가 더이사 필요하지 않을 때 호출되어 해당 view와 연결된 resource를 정리한다.**
 ****
 ## lifecycle library in android jetpack
-lifecycle library는 android jetpack의 일부분이다.
-다른 lifecycle에서 여러 작업을 수행하는 것을 구현할 때 유용하게 사용할 수 있다.
-대부분 activity와 fragment는 component에게 어떤 lifecycle에서 무었을 해야하는지
-알려주지만 lifecycle library를 사용하면 component가 lifecycle을 주시하다가 lifecycle이
-바뀌면 스스로 필요한 행동을 한다.
+### lifecycle library
++ **lifecycle library는 android jetpack의 일부분으로 lifecycle의 변화로 일어나는 여러가지 복잡한 작업을 보다 쉽게 구현할 수 있게 도와준다.**
++ **대부분의 activity와 fragment는 component에게 lifecycle의 변화에 따라 어떤 작업을 수행해야 하는지 직접 알려줘야 하지만 lifecycle library를 사용하면 component가 lifecycle의 변화를 주시하고 변화에 대응하는 작업을 스스로 실행한다.**
+
+### three part 0f lifecycle library
++ **lifecycle owner : component를 가지고 있는 activity 또는 fragment를 의미한다. owner는 `LifecycleOwner` interface를 구현한다.**
++ **lifecycle class : owner의 실제 lifecycle이 바뀌면 실행할 event를 구현한다.**
++ **lifecycle observer : lifecycle상태를 관찰하고 lifecycle이 바뀌면 `LifecycleObserver`를 실행한다.**
++ **lifecycle library의 핵심은 lifecycle observation개념이다.**
+	+ lifecycle observation은 class가 lifecycle의 변화를 알아차리고 스스로 lifecycle변화에 시작하거나 멈추는 등 변화에 응답하게 해준다.
+
+### lifecycle library적용
+```kotlin
+class DessertTimer(lifecycle: Lifecycle) : LifecycleObserver
+```
++ **생성자로 `Lifecycle`객체를 받는다.**
++ **`LifecycleObserver` interface를 상속받는다.**
+```kotlin
+ init {
+   lifecycle.addObserver(this)
+}
+```
++ **class내부에 init블럭을 추가**
++ **init블럭 내부에 `addObserver`메서드로 owner로 부터 전달받을 `Lifecycle`과 observer를 연결한다.**
+```kotlin
+@OnLifecycleEvent(Lifecycle.Event.ON_START)
+fun startTimer()
+@OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+fun stopTimer()
+```
++ **annotate를 통해 lifecycle event를 지정한다.**
++ **lifecycle event는 `Lifecycle.Event` 클래스에 정의되어 있다.**
+```kotlin
+class MainActivity : AppCompatActivity()
+```
++ **lifecycle owner로 지정할 MainActivity는 `AppCompatActivity`를 상속받기 때문에 owner로 사용하기위한 작업은 따로할 필요 없다.**
++ **`AppCompatActivity`의 superclass인 `FragmentActivity`에서 `LifecycleOwner`를 포함하고 있기 때문에 `AppCompatActivity`를 상속받는 MainActivity는 이미 lifecycle owner로 사용할 수 있다.**

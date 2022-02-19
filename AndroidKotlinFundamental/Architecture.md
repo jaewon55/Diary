@@ -1,5 +1,5 @@
 # Architecture
-## app architecture
+## UI controller, ViewModel, ViewModelFactory
 ### app architecture?
 + **app architecture은 앱의 class들의 관계를 설계하는 방법이다.**
 + **architecture로 설계된 코드는 체계적이고 뛰어난 성능을 발휘하고 관리하기 쉽다.**
@@ -108,4 +108,52 @@ class ScoreFragment : Fragment() {
 + **ViewModel와 연결할 fragment**
 + **navigation에서 전달받은 argument를 생성자로 해서 ViewModelFactory를 인스턴스화 한다.**
 + **인스턴스화한 ViewModelFactory를 `ViewModelProvider()`의 인자로 넣어 ViewModel을 인스턴스화 한다.**
+****
+## LiveData, LiveData Observer
+### LiveData
++ **LiveData는 lifecycle을 식별하는 data holder 클래스이다.**
++ **LiveData는 어떤 타입의 데이터든 보관할 수 있다.**
++ **LiveData객체를 observer와 연결해서 data가 변경될 때 처리해야될 행동을 자동적으로 처리하게 만들 수 있다.**
 
+### LiveData생성(Encapsulation)
+```kotlin
+// GameViewModel.kt
+ private val _word = MutableLiveData<String>()
+val word: LiveData<String> get() = _word
+
+private val _score = MutableLiveData<Int>()
+val score: LiveData<Int> get() = _score
+init {
+	_word.value = ""
+	_score.value = 0
+}
+```
++ **LiveData는 ViewModel에서 처리하도록 설계하는 것이 좋다. 따라서 ViewModel에선 수정가능하게 하고 UI controller에서는 읽기만 가능하도록 해야한다. -> Encapsulation**
++ **Encapsulation은 객체필드에 직접 접근을 제한하는 방법으로 private와는 다르게 객체필드의 데이터를 읽는것은 가능하지만 수정은 불가능하게 만든다. 이를 위해 kotlin의 `backing property`를 사용한다.**
+	+ backing property : 다른 객체(getter)가 현재의 행동에 영향을 미친다?
+	+ 관례상 backing property에서 getter는 `_[변수명]`으로 선언한다.
++ **LiveData의 Encapsulation : 수정가능한 MutableLiveData는 private으로 접근을 제한하고 수정불가능한 LiveData변수는 `get()`메서드로 MutableLiveData의 return을 가져온다.**
++ **LiveData의 초기화는 `setValue()`메서드로 한다. -> kotlin의 `value`프로퍼티를 사용한다.**
+
+### LiveData Observer
+```kotlin
+// GameFragment.kt
+viewModel.score.observe(viewLifecycleOwner, Observer { newScore ->
+	binding.scoreText.text = newScore.toString()
+})
+viewModel.word.observe(viewLifecycleOwner, Observer { newWord ->
+	binding.wordText.text = newWord
+})
+```
++ **fragment에서의 observer생성**
+	+ `onCreateView()`에서 생성한다.
+	+ `viewLifecycleOwner`를 `LifecylceOwner`로서 전달한다.
++ **LiveData를 observer와 연결한 경우 observer는 active-lifecycle에서만 변경된다.**
+
+### Observer Pattern
++ **Observer Pattern : observer와 observable(관찰대상) 사이의 소통을 명시하는 소프트웨어 설계 패턴**
+	+ observer : fragment의 `observe()`메서드
+	+ observable : LiveData
++ **일반적으로 observable이 변경되면 observer에게 변경된 내용이 전달된다. 하지만 예외로 observable이 변경되지 않고 observer가 inactive상태에서 active상태로 전환될 때에도 데이터가 전달된다.**
+	+ fragment가 재생성 되면 observer은 기존의 ViewModel과 재연결(inactive -> active) 하면서 현재의 데이터를 전달받게 된다.
++ **따라서 inactive->active의 전환에 대한 처리를 염두하지 않으면 버그가 발생할 수 있다.**

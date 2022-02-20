@@ -172,5 +172,37 @@ viewModel.word.observe(viewLifecycleOwner, Observer { newWord ->
 
 + **수정후 app architecture**
 
-
 ### view와 ViewModel직접 연결
+```xml
+<layout...>
+ <data>
+	<variable
+		name="gameViewModel"
+		type="com.example.android.guesstheword.screens.game.GameViewModel" />
+</data>
+```
++ **xml파일에 data binding variable(ViewModel)을 생성한다.**
+```kotlin
+// fragment
+viewModel = ViewModelProvider(this).get(GameViewModel::class.java)
+binding.gameViewModel = viewModel
+```
++ **fragment에서 binding.gameViewModel(xml의 변수)에 ViewModel을 할당한다.**
+```xml
+<Button
+   android:id="@+id/skip_button"
+   ...
+   android:onClick="@{() -> gameViewModel.onSkip()}"
+   ... />
+```
++ **Listener binding을 이용해서 이벤트를 정의한다.**
++ **Listener binding은 onClick(), onZoomIn(), onZoomOut()등의 이벤트가 발생하면 실행되는 바인딩식이다.(람다식으로 정의)**
+	+ Listener binding은 android gradle plugin 2.0버전 이상에서 작동한다.
+```kotlin
+// fragment
+binding.skipButton.setOnClickListener { onSkip() }
+private fun onSkip() {
+   viewModel.onSkip()
+}
+```
++ **UI controller를 거쳐 처리되던 click event가 이제 view와 viewmodle이 직접 연결되어 Listener binding으로 처리가 된다.**

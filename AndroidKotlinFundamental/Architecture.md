@@ -157,3 +157,13 @@ viewModel.word.observe(viewLifecycleOwner, Observer { newWord ->
 + **일반적으로 observable이 변경되면 observer에게 변경된 내용이 전달된다. 하지만 예외로 observable이 변경되지 않고 observer가 inactive상태에서 active상태로 전환될 때에도 데이터가 전달된다.**
 	+ fragment가 재생성 되면 observer은 기존의 ViewModel과 재연결(inactive -> active) 하면서 현재의 데이터를 전달받게 된다.
 + **따라서 inactive->active의 전환에 대한 처리를 염두하지 않으면 버그가 발생할 수 있다.**
+
+## binding data directly to the view objects
+### app architecture
+<p align="center">
+ 	<figure>
+	<img src="https://developer.android.com/codelabs/kotlin-android-training-live-data-data-binding/img/3f68038d95411119.png">
+	<figcaption>current app architecture</figcaption>
+ 	</figure>
+</p>
+

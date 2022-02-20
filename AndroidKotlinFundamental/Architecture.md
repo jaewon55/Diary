@@ -163,7 +163,7 @@ viewModel.word.observe(viewLifecycleOwner, Observer { newWord ->
 <p align="center">
  	<figure>
 	<img src="https://developer.android.com/codelabs/kotlin-android-training-live-data-data-binding/img/3f68038d95411119.png">
-	<figcaption>current app architecture</figcaption>
+	<figcaption align="center">current app architecture</figcaption>
  	</figure>
 </p>
 

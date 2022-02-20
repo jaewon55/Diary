@@ -161,7 +161,7 @@ viewModel.word.observe(viewLifecycleOwner, Observer { newWord ->
 ## binding data directly to the view objects
 ### app architecture
 <p align="center">
-	<img src="https://developer.android.com/codelabs/kotlin-android-training-live-data-data-binding/img/3f68038d95411119.png">
+	<img src="https://developer.android.com/codelabs/kotlin-android-training-live-data-data-binding/img/3f68038d95411119.png" width="800px" height="150px">
 </p>
 
 + **현재 view는 UI controller을 통해서 ViewModel에 저장된 데이터를 전달받고 있다.**

@@ -167,7 +167,7 @@ viewModel.word.observe(viewLifecycleOwner, Observer { newWord ->
 + **현재 view는 UI controller을 통해서 ViewModel에 저장된 데이터를 전달받고 있다.**
 + **data binding을 이용하면 view를 ViewModel에 직접 연결해서 데이터를 받아올 수 있다.**
 <p align="center">
-	<img src="https://developer.android.com/codelabs/kotlin-android-training-live-data-data-binding/img/7f26738df2266dd6.png">
+	<img src="https://developer.android.com/codelabs/kotlin-android-training-live-data-data-binding/img/7f26738df2266dd6.png" width="1000px" height="400px">
 </p>
 
 + **수정후 app architecture**

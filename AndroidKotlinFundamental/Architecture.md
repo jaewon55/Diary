@@ -15,7 +15,7 @@
 + **activity와 fragment에 나타낼 데이터의 정보를 저장하는 class로 데이터에 대한 약간의 계산과 변화를 처리할 수 있다.**
 + **ViewModel은 configuration changes가 발생해도 남아있기 때문에 activity, fragment, view를 참조하는 코드가 포함되면 안된다.**
 + **ViewModel은 configuration change가 발생해도 삭제되지 않는다.**
-+ **ViewModel은 관련된 fragment와 분리되거나 activity가 끝나면 파괴된다. 파괴되기전 `onCleared()`메서드가 호출되어 resourse를 지운다.**
++ **ViewModel은 관련된 fragment와 activity가 분리되거나 끝나면 파괴된다. 파괴되기전 `onCleared()`메서드가 호출되어 resourse를 지운다.**
 
 ### ViewModel생성 및 연결
 ```gradle

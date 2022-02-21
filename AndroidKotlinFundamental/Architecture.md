@@ -206,3 +206,81 @@ private fun onSkip() {
 }
 ```
 + **UI controller를 거쳐 처리되던 click event가 이제 view와 viewmodle이 직접 연결되어 Listener binding으로 처리가 된다.**
+
+### data-binding error message
+```
+// adroidstudio build pane
+error: cannot find symbol
+import com.example.android.guesstheword.databinding.GameFragmentBindingImpl"
+
+symbol:   class GameFragmentBindingImpl
+location: package com.example.android.guesstheword.databinding
+```
++ **data binding을 사용하면 컴파일 프로세스는 data binding을 사용하기 위한 중간 클래스를 생성한다.**
++ **이러한 중간 클래스에서 발생하는 error는 코드를 작성중에는 나타나지 않고 compile time에 발생한다.**
++ **compile time에 발생하는 에러는 찾아내기 힘들기 때문에 변수명에 대한 오타, 람다식을 작성하는데 주의해야 한다.**
+
+### LiveData data binding
++ **data binding을 사용하면 LiveData observer를 사용하지 않고 변화한 데이터를 UI에 바로 적용할 수 있다.**
+```xml
+<TextView
+   android:id="@+id/word_text"
+   ...
+   android:text="@{gameViewModel.word}"
+   ... />
+```
++ **xml파일에서 data binding variable(ViewModel)을 사용해서 LiveData를 적용할 객체를 지정한다.**
+```kotlin
+// fragment
+viewModel = ViewModelProvider(this).get(GameViewModel::class.java)
+binding.gameViewModel = viewModel
+binding.lifecycleOwner = viewLifecycleOwner
+```
++ **fragment에서 binding의 `lifecycleOwner`를 `viewLifecycleOwner`로 할당해서 LiveData의 범위를 지정한다.**
+```kotlin
+viewModel.word.observe(viewLifecycleOwner, Observer { newWord ->
+   binding.wordText.text = newWord
+})
+```
++ **이제 위의 observe메서드를 사용해서 UI controller에서 변환해 주던 LiveData를 view객체에서 변환할 수 있게 된다.**
+
+```xml
+// strings.xml
+<resources>
+	...
+	<string name="score_format">Current Score: %d</string>
+	...
+</resources>
+```
+```xml
+// game_fragment.xml
+<TextView
+	android:id="@+id/score_text"
+	...
+	android:text="@{@string/score_format(gameViewModel.score)}"
+	...
+        />
+```
++ **서식지정자 사용**
+
+## LiveData Transformations
+### Transformations.map()
++ **LiveData의 value를 변환해서 전달하고 싶다면 `Transformations.map()`메서드를 사용할 수 있다.**
++ **`Transformations.map()`메서드는 LiveData의 value를 변경하고 변경한 LiveData객체를 반환한다.**
++ **observer가 없는 LiveData는 `Transformations.map()`메서드로 변환할 수 없다.**
++ **`Transformations.map()`메서드는 변환할 LiveData와 변환 함수를 인자로 받는다.**
+	+ 인자로 받는 변환 함수는 메인 쓰레드에서 실행되기 때문에 오래 걸리는 작업은 포함하면 안된다.
+```kotlin
+val currentWordLetter = Transformations.map(word) { word ->
+        word.length
+} // word의 길이를 반환
+
+val currentWordposition = Transformations.map(currentWordLetter) { len ->
+	(1..len).random()
+} // word의 1~len 중 하나의 정수를 반환
+
+val currentWordChar = Transformations.map(word) { word ->
+	word.get(currentWordposition.value!!.minus(1)).toUpperCase()
+} // word의 (랜덤 정수 - 1)인덱스에 해당하는 문자를 대문자로 반환
+```
++ **`Transformations.map()`메서드 사용예제**

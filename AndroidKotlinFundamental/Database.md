@@ -12,7 +12,7 @@
 + **`Room`은 SQLite를 보다 쉽게 사용할 수 있는 라이브러리다.**
 + **`Room`은 `RoomDatabase`, `DAO`, `Entity`로 구성되어 있다.**
 <p align="center">
-	<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fcu1a4e%2Fbtq1KAzkc4e%2FSGWx0e7YJkeycMQerJbLh1%2Fimg.png">
+	<img src="https://blog.kakaocdn.net/dn/cu1a4e/btq1KAzkc4e/SGWx0e7YJkeycMQerJbLh1/img.png">
 </p>
 
 + **application은 `Room database`에서 `DAO`를 가져온다.**

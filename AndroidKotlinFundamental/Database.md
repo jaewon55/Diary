@@ -116,3 +116,51 @@ abstract class SleepDatabase : RoomDatabase() {
 	+ 규모가 큰 프로젝트의 경우 여러 쓰레드에서 동시에 같은 database를 요청할 수 도 있다. 이 때 같은 database가 둘 이상 생성될 수 있다.
 	+ 따라서 database를 생성하는 메서드는 한 번에 하나의 쓰레드에서만 실행하도록 하는 `synchronized{}`로 감싸주는 것이 좋다.
 + **database를 빌드하기 전에 `schema`가 수정되었을 경우 이전의 데이터를 새로운 `schema`에 적용하는 방법을 정의한 `migration`을 지정한다.**
+
+## Coroutine
+#### Multi-threading & callback
++ **현재 대부분의 디바이스는 다중 하드웨어 프로세서를 가지고 있다. 이러한 프로세서는 동시에 실행될 수 있다. ->`multi-processing`**
++ **여러 프로세서를 효과적으로 사용하기 위해서 OS는 application이 프로세서에서 여러 쓰레드를 실행할 수 있도록 한다. ->`multi-threading`**
++ **일반적인 경우 application은 하나의 작업을 실행하면 작업이 완료될 때 까지 실행이 멈추게 된다. 따라서 긴 작업을 수행하는 경우 앱은 장시간 멈추게 된다. 이 경우 UX뿐만 아니라 hardware적으로도 효율적이지 않다.**
++ **이러한 문제를 `callback`을 사용해서 긴 시간이 걸리는 작업을 main쓰레드가 아닌 다른 쓰레드에서 처리하게 만들어 해결할 수 있다.**
++ **하지만 `callback`을 사용하는 코드는 순차적으로 실행되지 않기 때문에 가독성이 떨어지고 관리도 어렵다. 그리고 언어가 제공하는 몇몇 기능들을 사용할 수 없게 된다.**
+
+#### Coroutine
++ **callback의 단점을 보완한 것이 `Coroutine`이다.**
++ **`Coroutine`은 프로그램의 기본적인 흐름과는 관계없이 실행된다. 따라서 main 쓰레드의 진행을 멈추거나 간섭하지 않는다.**
++ **`suspend`는 코틀린에서 함수를 `coroutine`에서 사용할 수 있다고 표시하는 keyword이다.**
+	+ blocking : 작업이 끝날 때 까지 다른 모든 작업들이 중단된다.
+	+ suspending : 작업의 결과가 필요한 작업은 일시중단 하고 결과와 관계없는 작업은 실행할 수 있다.
++ **Coroutine을 사용하는데 필요한 3가지 요소**
+	+ Job : `Coroutine`을 취소하는데 사용된다. Job은 상하계층을 이룰 수 있고 상위 Job이 취소되면 하위 Job또한 즉시 취소된다.
+	+ Dispatcher : `Coroutine`을 실행할 쓰레드를 보내는 역할을 한다.
+	+ Scope : `Coroutine`이 실행될 때의 context를 정의하는 것으로 `Job`과 `Dispatcher`을 결합한다.
++ **`CoroutineScope`는 `Coroutine`을 추적하고 관리한다. 각각의 `Coroutine`은 특정한 `CoroutineScope`에서 실행된다.**
+	+ Architecture components는 최고수준의 scope를 내장하고 있다.(`ViewModelScope`, `LifecycleScope`, `liveData`)
+	+ 이러한 scope는 각각 적절한 dependencies를 설정해야 한다.
+
+## button states
+#### enabled
++ **`enabled`속성은 view의 활성화 여부를 결정한다. view의 가시성을 결정하는 `visibility`속성과는 다르다.**
++ **`enabled`속성으로 설정한 view가 비활성화 되면 사용자가 알아볼 수 있도록 default 스타일로 view가 설정된다.**
+	+ 만약 `background` 또는 `textcolor`가 설정되어 있다면 view가 비활성화 되어도 default 스타일이 적용되지 않는다.
+	+ 활성화/비활성화 상태에 대한 스타일을 설정하고 싶다면 background : `StateListDrawable`/ text : `ColorStateList` 속성을 사용하면 된다.
+
+#### Snackbar
++ **database를 삭제하는 것과 같은 작업이 완료되었음을 사용자에게 알리기 위한 방법으로 `Snackbar`가 있다.**
++ **`Snackbar`는 화면의 아래에 메세지로 동작에 대한 짧은 feedback을 제공한다.**
++ **`Snackbar`는 시간이 끝나거나, 사용자가 다른 상호작용을 하면 사라진다.**
+```kotlin
+sleepTrackerViewModel.showSnackBarEvent.observe(this, Observer {
+	if (it == true) {
+	Snackbar.make(
+		requireActivity().findViewById(android.R.id.content),
+		getString(R.string.cleared_message),
+		Snackbar.LENGTH_SHORT
+	).show()
+	sleepTrackerViewModel.doneShowingSnackbar()
+	}
+})
+```
++ **`Snackbar`구현 코드**
++ **`Toast`와 비슷하다**

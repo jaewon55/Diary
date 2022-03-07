@@ -29,7 +29,7 @@ kapt "org.xerial:sqlite-jdbc:3.34.0"
 ## adapter
 + **getItemCount() : 표시할 item의 개수를 `RecyclerView`에 알려준다**
 + **onBindViewHolder() : `RecyclerView`에 의해 호출되어 item리스트에서 position에 해당하는 data를 화면에 나타낸다.**
-+ **onCreateViewHolder() : `RecyclerView`가 `ViewHolder`가 필요할 때 호출한다.**
++ **onCreateViewHolder() : `RecyclerView`에서`ViewHolder`가 필요할 때 호출한다.**
 	+ 두 개(parent, viewType)의 파라미터를 받고 `ViewHolder`를 리턴한다.
 	+ parent는 `ViewHolder`를 가지고 있는 RecyclerView
 	+ viewType은 같은 `RecyclerView`에서 여러 view가 있을 때 view를 구분하기 위해 사용된다.

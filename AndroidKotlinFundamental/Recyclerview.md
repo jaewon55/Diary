@@ -26,21 +26,6 @@ kapt "org.xerial:sqlite-jdbc:3.34.0"
 + **`RecyclerView`는 이 패턴을 사용해서 앱의 data를 `RecyclerView`가 표시할 수 있는 데이터로 변환한다.**
 	+ 변환시 앱이 data를 저장하고 처리하는 방법은 변환하지 않는다.
 
-### RecyclerView의 구성
-1. **view의 컨테이너로 동작할 `RecyclerView`를 layout파일에 정의한다.**
-2. **data를 표시할 item을 layout파일에 정의한다.** 
-	+ 한 layout파일에 한 개의 item을 정의한다.(필수사항은 아님)
-	+ item은 `RecyclerView`안에서 사용하기 때문에 따로 `ViewGroup`에 넣을 필요 없다.
-	+ data를 표시할 item은 한 번에 한 개의 item을 생성하기 위해 fragment의 layout과 분리되어야 한다.(필수)
-3. **view의 UI구조를 관리하는 layout manager를 정의 한다.**
-4. **item에 표시할 data에 정보를 담은 view holder를 정의한다.**
-	+ `ViewHolder` 클래스를 상속받는다.
-	+ `viewHolder`는 화면 주변 view(직전/직후 표시될 item)를 효율적으로 이동시키기 위한 정보를 포함한다.
-5. **`adapter`를 정의한다.**
-	+ `adapter`는 data와 `RecyclerView`를 연결한다.
-	+ data를 화면에 표시될 수 있도록 (viewHolder 내부에서)변환한다.
-	+ `RecyclerView`는 `adapter`를 이용해서 data를 화면에 표시할 방법을 알아낸다.
-
 ## adapter
 + **getItemCount() : 표시할 item의 개수를 `RecyclerView`에 알려준다**
 + **onBindViewHolder() : `RecyclerView`에 의해 호출되어 item리스트에서 position에 해당하는 data를 화면에 나타낸다.**

@@ -1,5 +1,9 @@
 # 기록
-매일매일 기록하기
+
+## Notion으로 옮기는중....
++ [42Subject](https://material-havarti-67f.notion.site/42Seoul-294a575a186d4587bbfd86b0c15f9ca0)
++ [AndroidKotlinFundamentals](https://material-havarti-67f.notion.site/Android-Kotlin-Fundamentals-f08c79c37383493a867ecae9edae1254)
+
 ## 코틀린
 ### __Do it!코틀린 프로그래밍__
    + [Why Kotlin](https://github.com/kksa5729/Diary/blob/main/Kotlin/Why%20Kotlin.md) 
